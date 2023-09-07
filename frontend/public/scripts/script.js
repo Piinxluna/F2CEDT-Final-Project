@@ -9,6 +9,7 @@ function hidecode() {
     } else {
       x.style.display = "none";
       changeText.textContent = "show";
+      changeText.style.color = "#211217"
       changeMapSize.style.width = "100%";
     }
 }
