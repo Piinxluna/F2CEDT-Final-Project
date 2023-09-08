@@ -1,16 +1,16 @@
 
   
   /* If you want the content centered horizontally and vertically */
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
   
   /* Style the image inside the centered container, if needed */
-  .centeredImg {
+.centeredImg {
     width: 300px 400px;
   }
 
@@ -26,42 +26,69 @@ h3 {
   font-size: 14px;
 }
 
+.borderButton {
+  appearance: none;
+  position: absolute;
+  border-radius: 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.borderButton:disabled {
+  pointer-events: none;
+}
+
+.borderButton:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
 #mainPart {
   position: fixed;
   left: 0;
   top: 0;
   height: 100%;
   width: 65%;
-  background-color: aqua;
+  background-color: #fbf7f8;
 }
 
 .mainMap {
-  position: fixed;
+  position: relative;
   left: 0;
   top: 0;
   height: 75%;
-  width: 65%;
+  width: 100%;
   background: transparent;
 }
 
-/* .map {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 75%;
-  width: 65%;
-  background: transparent;
-} */
+.centerimg {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  top: 10%;
+  width: 50%;
+  height: auto;
+  max-height: 600px;
+  max-width: 600px;
+}
 
 .underMap {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   height: 25%;
-  width: 65%;
+  width: 100%;
   background: transparent;
 }
-
 
 .levelScore{
   position: relative;
@@ -71,30 +98,29 @@ h3 {
 
 .star {
   position: relative;
-  left: 25px;
-  bottom: 25px;
+  left: 5%;
+  margin-bottom: 5px;
   display: flex;
 }
 
 .levelNum {
   position: relative;
-  left: 25px;
-  bottom: 60px;
+  left: 5%;
+  bottom: 16%;
   display: flex;
 }
-
 
 .help {
   position: absolute;
   right: 40px;
-  bottom: 60px;
+  bottom: 20%;
   display: flex;
 }
 
 .fillButton {
   appearance: none;
-  background-color: rgb(254, 211, 225);
-  border: 1px solid #1A1A1A;
+  background-color: #fde191;
+  border: 1px solid #211217;
   border-radius: 12px;
   box-sizing: border-box;
   color: #3B3B3B;
@@ -121,7 +147,7 @@ h3 {
 
 .fillButton:hover {
   color: #fff;
-  background-color: #1A1A1A;
+  background-color: #211217;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
@@ -129,30 +155,6 @@ h3 {
 .fillButton:active {
   box-shadow: none;
   transform: translateY(0);
-}
-
-/* .intB {
-  position: relative;
-  box-sizing: border-box;
-  display: inline-block;
-  background-color: bisque;
-  border: 1px solid #111;
-  border-radius: 12px;
-  outline: none;
-  cursor: pointer;
-  text-align: center;
-} */
-
-/* <!-- HTML !-->
-<button class="button-28" role="button">Button 28</button> */
-
-#mainCode {
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 35%;
-  background-color: rgb(212, 86, 86);
 }
 
 #hideButton {
@@ -165,46 +167,34 @@ h3 {
   border-radius: 12px;
   outline: none;
   cursor: pointer;
+  color: #fbf7f8;
+}
+
+#mainCode {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 35%;
+  background-color: #70b29c;
 }
 
 .tranButton {
-  appearance: none;
-  position: absolute;
   bottom: 60px;
   right: 20px;
   background-color: transparent;
-  border: 1px solid #1A1A1A;
-  border-radius: 12px;
-  box-sizing: border-box;
-  color: #3B3B3B;
-  cursor: pointer;
+  border: 1px solid #fbf7f8;
+  color: #fbf7f8;
   display: inline-block;
   min-height: 20px;
   min-width: 20px;
-  outline: none;
   padding: 2px 3px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   width: 25%;
-  will-change: transform;
-}
-
-.tranButton:disabled {
-  pointer-events: none;
 }
 
 .tranButton:hover {
-  color: #fff;
-  background-color: #1A1A1A;
+  color: #211217;
+  background-color: #f1b9cc;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
-}
-
-.tranButton:active {
-  box-shadow: none;
-  transform: translateY(0);
 }
