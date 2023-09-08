@@ -2,6 +2,7 @@ function hidecode() {
     var x = document.getElementById("mainCode");
     const changeText = document.querySelector("#hideButton");
     const changeMapSize = document.getElementById("mainPart");
+    const runCodeButton = document.getElementsByClassName("borderButton");
     if (x.style.display === "none") {
       x.style.display = "block";
       changeText.textContent = "hide";
