@@ -19,11 +19,9 @@
 <body>
     <section id="mainPart"> <!-- map -->
         <div class="mainMap">
-            <div class="centered">
-                <img src="./src/2495304383_06b40b804a_o.jpg" width="350" height="300" alt="map pic">
-            </div>
+            <img src="./src/Map.png" class="centerimg" alt="map pic">
         </div>
-
+        
         <div class="underMap"> <!-- level bar -->
             <div class="levelScore">
                 <img class="star" src="./src/2495304383_06b40b804a_o.jpg" width="200" height="50" alt="star">
@@ -40,17 +38,19 @@
         </div>
     </section>
 
-    <h3>
-        <button id="hideButton" onclick="hidecode()">
-            hide
-        </button>
-    </h3>
+    <div class="changeAftShow">
+        <h3>
+            <button id="hideButton" onclick="hidecode()">
+                hide
+            </button>
+            <button class="borderButton">
+                run code
+            </button>
+        </h3>
+    </div>
 
     <section id="mainCode">
-        <div>
-            <button class="tranButton">
-                <h3>run code</h3>
-            </button>
+        <div class="mainAns">
         </div>
     </section>
 

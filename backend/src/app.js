@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-import LevelRoute from "./controllers/levelRoute.js";
+import LevelRoute from "./routes/levelRoute.js";
 
 const app = express();
 
@@ -13,6 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // use routes
-app.use("/changeLevel", LevelRoute);
+app.use("/getNewLevel", LevelRoute);
 
 export default app;
