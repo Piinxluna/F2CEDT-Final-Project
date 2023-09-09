@@ -5,7 +5,11 @@ const levelSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  map: {
+  mapFile: {
+    type: String,
+    required: true,
+  },
+  mapArray: {
     type: Array,
     required: true,
   },
@@ -13,12 +17,16 @@ const levelSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  totalBaby: {
-    type: Number,
+  babyDuckPos: {
+    type: Array,
     required: true,
   },
-  scoring: {
+  goalPos: {
     type: Array,
+    required: true,
+  },
+  codeGuide: {
+    type: String,
     required: true,
   },
   hint: {
