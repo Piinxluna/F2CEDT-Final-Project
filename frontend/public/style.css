@@ -1,6 +1,8 @@
+* {
+  font-family: "Kanit", sans-serif;
+}
 
-  
-  /* If you want the content centered horizontally and vertically */
+/* If you want the content centered horizontally and vertically */
 .centered {
   position: absolute;
   top: 50%;
@@ -8,20 +10,25 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
-  
-  /* Style the image inside the centered container, if needed */
-.centeredImg {
-    width: 300px 400px;
-  }
 
-h1 {
-  font-family: 'Kanit', sans-serif;
-  font-weight: 400;
-  font-size: 48px;
+/* Style the image inside the centered container, if needed */
+.centeredImg {
+  width: 300px 400px;
 }
 
+h1 {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-size: 100px;
+}
+
+h2 
+{
+  font-weight: 450;
+  font-size: 48 px;
+}
 h3 {
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
   font-weight: 300;
   font-size: 14px;
 }
@@ -65,7 +72,7 @@ h3 {
   background: transparent;
 }
 
-.levelScore{
+.levelScore {
   position: relative;
   left: 24px;
   top: 12px;
@@ -104,7 +111,7 @@ h3 {
   border: 1px solid #211217;
   border-radius: 12px;
   box-sizing: border-box;
-  color: #3B3B3B;
+  color: #3b3b3b;
   cursor: pointer;
   display: inline-block;
   margin: 5px;
@@ -112,7 +119,7 @@ h3 {
   padding: 2px 3px;
   text-align: center;
   text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -159,8 +166,6 @@ h3 {
   background-color: #70b29c;
 }
 
-
-
 .borderButton {
   bottom: 60px;
   right: 20px;
@@ -179,7 +184,7 @@ h3 {
   outline: none;
   text-align: center;
   text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -211,7 +216,7 @@ h3 {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -238,3 +243,49 @@ h3 {
   cursor: pointer;
 }
 
+.order-dropdown
+{
+  min-width: 100px;
+}
+
+.dropdown-title
+{
+  text-align: center;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-select {
+  padding: 5px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.dropdown-options {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.show-options {
+  display: block;
+}
+
+.mainAns
+{
+  padding : 20px;
+}

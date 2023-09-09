@@ -1,73 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>เกมจ้า</title>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/api.js"></script>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="codeinput.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
-    <section id="mainPart"> <!-- map -->
-        <div class="mainMap">
-            <img src="./src/Map.png" class="centerimg" alt="map pic">
+  <body>
+    <section id="mainPart">
+      <!-- map -->
+      <div class="mainMap">
+        <img src="./src/Map.png" class="centerimg" alt="map pic" />
+      </div>
+      <div class="underMap">
+        <!-- level bar -->
+        <div class="levelScore">
+          <img
+            class="star"
+            src="./src/2495304383_06b40b804a_o.jpg"
+            width="200"
+            height="50"
+            alt="star"
+          />
+          <h1 class="levelNum">Level 0</h1>
         </div>
-        <div class="underMap"> <!-- level bar -->
-            <div class="levelScore">
-                <img class="star" src="./src/2495304383_06b40b804a_o.jpg" width="200" height="50" alt="star">
-                <h1 class="levelNum">Level 0</h1>
-            </div>
 
-            <div class="help1">
-                <button class="fillButton" onclick="openCenterModal1()">
-                    <h3>hint</h3>
-                </button>
-                <div id="centerModal1" class="center-modal">
-                    <div class="center-modal-content">
-                        <span class="close" onclick="closeCenterModal1()">close</span>
-                        <p>Hint จ้าาาา Hint</p>
-                    </div>
-                </div>
+        <div class="help1">
+          <button class="fillButton" onclick="openCenterModal1()">
+            <h3>hint</h3>
+          </button>
+          <div id="centerModal1" class="center-modal">
+            <div class="center-modal-content">
+              <span class="close" onclick="closeCenterModal1()">close</span>
+              <p>Hint จ้าาาา Hint</p>
             </div>
-            <div class="help2">
-                <button class="fillButton" onclick="openCenterModal2()">
-                    <h3>?</h3>
-                </button>
-                <div id="centerModal2" class="center-modal">
-                    <div class="center-modal-content">
-                        <span class="close" onclick="closeCenterModal2()">close</span>
-                        <p>เล่นไงง้าบ</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="help2">
+          <button class="fillButton" onclick="openCenterModal2()">
+            <h3>?</h3>
+          </button>
+          <div id="centerModal2" class="center-modal">
+            <div class="center-modal-content">
+              <span class="close" onclick="closeCenterModal2()">close</span>
+              <p>เล่นไงง้าบ</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="changeAftShow">
-        <h3>
-            <button id="hideButton" onclick="hidecode()">
-                hide
-            </button>
-            <button class="borderButton">
-                run code
-            </button>
-        </h3>
+      <h3>
+        <button id="hideButton" onclick="hidecode()">hide</button>
+        <button class="borderButton">run code</button>
+      </h3>
     </div>
-
     <section id="mainCode">
-        <div class="mainAns">
+      <div class="mainAns">
+        <h2 class="dropdown-title">Code here</h2>
+        <div>
+        <label for="movement" class="order-dropdown"> 1 : </label>
+        <select id="movement-choice" class="dropdown-select">
+          <option disabled>--Choose Option--</option>
+          <option value="Walk" class="dropdown-choice">Walk()</option>
+          <option value="Jump" class="dropdown-choice">Jump()</option>
+          <option value="Turn left" class="dropdown-choice">Turn left()</option>
+          <option value="Turn right" class="dropdown-choice">Turn right()</option>
+        </select>
         </div>
+        <div>
+            <h3> </h3>
+            <label for="movement" class="order-dropdown">2 : </label>
+        <select id="movement-choice" class="dropdown-select">
+          <option disabled>--Choose Option--</option>
+          <option value="Walk" class="dropdown-choice">Walk()</option>
+          <option value="Jump" class="dropdown-choice">Jump()</option>
+          <option value="Turn left" class="dropdown-choice">Turn left()</option>
+          <option value="Turn right" class="dropdown-choice">Turn right()</option>
+        </select>
+        </div>
+        <div>
+            <h3> </h3>
+            <label for="movement" class="order-dropdown">3 : </label>
+        <select id="movement-choice" class="dropdown-select">
+          <option disabled>--Choose Option--</option>
+          <option value="Walk" class="dropdown-choice">Walk()</option>
+          <option value="Jump" class="dropdown-choice">Jump()</option>
+          <option value="Turn left" class="dropdown-choice">Turn left()</option>
+          <option value="Turn right" class="dropdown-choice">Turn right()</option>
+        </select>
+        </div>
+        <div>
+            <h3> </h3>
+            <label for="movement" class="order-dropdown">4 : </label>
+        <select id="movement-choice" class="dropdown-select">
+          <option disabled>--Choose Option--</option>
+          <option value="Walk" class="dropdown-choice">Walk()</option>
+          <option value="Jump" class="dropdown-choice">Jump()</option>
+          <option value="Turn left" class="dropdown-choice">Turn left()</option>
+          <option value="Turn right" class="dropdown-choice">Turn right()</option>
+        </select>
+        </div>
+        <div>
+            <h3> </h3>
+            <label for="movement" class="order-dropdown">5 : </label>
+        <select id="movement-choice" class="dropdown-select">
+          <option disabled>--Choose Option--</option>
+          <option value="Walk" class="dropdown-choice">Walk()</option>
+          <option value="Jump" class="dropdown-choice">Jump()</option>
+          <option value="Turn left" class="dropdown-choice">Turn left()</option>
+          <option value="Turn right" class="dropdown-choice">Turn right()</option>
+        </select>
+        </div>
+        <div>
+            <h3> </h3>
+            <label for="movement" class="order-dropdown">6 : </label>
+        <select id="movement-choice" class="dropdown-select">
+          <option disabled>--Choose Option--</option>
+          <option value="Walk" class="dropdown-choice">Walk()</option>
+          <option value="Jump" class="dropdown-choice">Jump()</option>
+          <option value="Turn left" class="dropdown-choice">Turn left()</option>
+          <option value="Turn right" class="dropdown-choice">Turn right()</option>
+        </select>
+        </div>
+      </div>
     </section>
-
-</body>
-
+  </body>
 </html>
