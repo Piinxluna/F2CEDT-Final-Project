@@ -44,3 +44,4 @@ window.onload = function() {
   closeCenterModal1();
   closeCenterModal2();
 };
+
