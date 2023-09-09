@@ -21,19 +21,33 @@
         <div class="mainMap">
             <img src="./src/Map.png" class="centerimg" alt="map pic">
         </div>
-        
         <div class="underMap"> <!-- level bar -->
             <div class="levelScore">
                 <img class="star" src="./src/2495304383_06b40b804a_o.jpg" width="200" height="50" alt="star">
                 <h1 class="levelNum">Level 0</h1>
             </div>
-            <div class="help">
-                <button class="fillButton">
+
+            <div class="help1">
+                <button class="fillButton" onclick="openCenterModal1()">
                     <h3>hint</h3>
                 </button>
-                <button class="fillButton">
+                <div id="centerModal1" class="center-modal">
+                    <div class="center-modal-content">
+                        <span class="close" onclick="closeCenterModal1()">close</span>
+                        <p>Hint จ้าาาา Hint</p>
+                    </div>
+                </div>
+            </div>
+            <div class="help2">
+                <button class="fillButton" onclick="openCenterModal2()">
                     <h3>?</h3>
                 </button>
+                <div id="centerModal2" class="center-modal">
+                    <div class="center-modal-content">
+                        <span class="close" onclick="closeCenterModal2()">close</span>
+                        <p>เล่นไงง้าบ</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
