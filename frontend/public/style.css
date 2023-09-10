@@ -59,8 +59,6 @@ h3 {
   top: 10%;
   width: 50%;
   height: auto;
-  max-height: 600px;
-  max-width: 600px;
 }
 
 .underMap {
@@ -87,8 +85,8 @@ h3 {
 
 .levelNum {
   position: relative;
-  left: 5%;
-  bottom: 16%;
+  left: 7%;
+  bottom: 5%;
   display: flex;
 }
 
@@ -107,6 +105,10 @@ h3 {
 }
 
 .fillButton {
+  bottom: 5%;
+  right: 5%;
+  width: 50px;
+  height: 40px;
   background-color: #fde191;
   border: 1px solid #211217;
   border-radius: 12px;
@@ -114,18 +116,18 @@ h3 {
   color: #3b3b3b;
   cursor: pointer;
   display: inline-block;
-  margin: 5px;
   outline: none;
-  padding: 2px 3px;
+  padding: 0px;
+  line-height: 0px;
   text-align: center;
   text-decoration: none;
   transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 50px;
-  height: 40px;
   will-change: transform;
+  position: absolute;
+  appearance: none;
 }
 
 .fillButton:disabled {
@@ -133,7 +135,7 @@ h3 {
 }
 
 .fillButton:hover {
-  color: #fff;
+  color: #fffcfc;
   background-color: #211217;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
@@ -158,26 +160,26 @@ h3 {
 }
 
 #mainCode {
-  position: fixed;
-  right: 0;
-  top: 0;
+  position: absolute;
+  right: 0px;
+  top: 0px;
   height: 100%;
   width: 35%;
   background-color: #70b29c;
 }
 
 .borderButton {
-  bottom: 60px;
-  right: 20px;
+  bottom: 5%;
+  right: 3%;
+  width: 100px;
+  height: 40px;
   background-color: #fbf7f8;
   border: 1px solid #211217;
   color: #211217;
   display: inline-block;
-  padding: 2px 3px;
-  width: 100px;
-  height: 40px;
+  /* padding: 2px 3px; */
   appearance: none;
-  position: absolute;
+  position: absolute ;
   border-radius: 12px;
   box-sizing: border-box;
   cursor: pointer;
@@ -189,7 +191,7 @@ h3 {
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  z-index: 4;
+  z-index: 2;
 }
 
 .borderButton:hover {
@@ -208,10 +210,18 @@ h3 {
   transform: translateY(0);
 }
 
+/* .changeAftShow {
+  position: fixed;
+  right: 0;
+  height: 100%;
+  width: 35%;
+  z-index: 2;
+} */
+
 .center-modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   right: 0;
   top: 0;
   width: 100%;
@@ -223,7 +233,8 @@ h3 {
 }
 
 .center-modal-content {
-  background-color: #fff;
+  background-color: #ffffff;
+  z-index: 10;
   padding: 20px;
   width: 70%;
   height: 70%;
