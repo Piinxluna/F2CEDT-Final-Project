@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>เกมจ้า</title>
     <script src="./scripts/script.js"></script>
-    <script src="./scripts/api.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
     <link type="text/css" rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body> <!--test-->
     <section id="mainPart"> <!-- map -->
         <div class="mainMap">
             <img src="./src/Map.png" class="centerimg" alt="map pic">
@@ -57,7 +57,7 @@
             <button id="hideButton" onclick="hidecode()">
                 hide
             </button>
-            <button class="borderButton">
+            <button id="runCodeButton" class="borderButton">
                 run code
             </button>
         </h3>
