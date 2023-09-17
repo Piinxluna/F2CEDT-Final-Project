@@ -26,7 +26,7 @@ const levelSchema = new mongoose.Schema({
     required: true,
   },
   codeGuide: {
-    type: String,
+    type: Object,
     required: true,
   },
   hint: {
