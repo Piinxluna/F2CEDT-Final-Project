@@ -4,6 +4,7 @@ body {
 
 #gameOver {
   position: fixed;
+  display: none;
   /* display: none; */
   z-index: 3;
   height: 100%;
@@ -23,7 +24,7 @@ body {
 
 #lose {
     position: relative;
-    display: none;
+    display: block;
     height: 100%;
     width: 100%;
     background: transparent;
