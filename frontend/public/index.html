@@ -26,15 +26,32 @@
         <!-- level bar -->
         <div class="levelScore">
           <img
+            id="star1"
             class="star"
-            src="./src/2495304383_06b40b804a_o.jpg"
-            width="200"
-            height="50"
+            src="./src/vecteezy_star.jpg"
+            width="6%"
+            height="auto"
             alt="star"
           />
-          <h1 class="levelNum">Level 0</h1>
+          <img
+            id="star2"
+            class="star"
+            src="./src/vecteezy_star.jpg"
+            width="6%"
+            height="auto"
+            alt="star"
+          />
+          <img
+            id="star3"
+            class="star"
+            src="./src/vecteezy_star.jpg"
+            width="6%"
+            height="auto"
+            alt="star"
+          />
+          <h1 id="levelNum">Level 0</h1>
         </div>
-
+        
         <div class="help1">
           <button class="fillButton" onclick="openCenterModal1()">
             <h3>hint</h3>
@@ -42,7 +59,7 @@
           <div id="centerModal1" class="center-modal">
             <div class="center-modal-content">
               <span class="close" onclick="closeCenterModal1()">close</span>
-              <p>Hint จ้าาาา Hint</p>
+              <p id="hintContent">Hint จ้าาาา Hint</p>
             </div>
           </div>
         </div>
@@ -53,15 +70,15 @@
           <div id="centerModal2" class="center-modal">
             <div class="center-modal-content">
               <span class="close" onclick="closeCenterModal2()">close</span>
-              <p>เล่นไงง้าบ</p>
+              <p id="helpContent">เล่นไงง้าบ</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <div class="changeAftShow">
-      <h3>
+      </section>
+      
+      <div class="changeAftShow">
+        <h3>
         <button id="hideButton" onclick="hidecode()">hide</button>
         <button id="runCodeButton" class="borderButton">run code</button>
       </h3>
