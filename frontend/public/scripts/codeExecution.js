@@ -10,10 +10,11 @@ export async function calcResult() {
 }
 
 export async function showNewLevel(levelNumber) {
-  console.log(levelNumber + "Is run");
-  // let levNum = levelChange.substr(levelChange.length-1,1);
-  // levNum = parseInt(levNum, 10);
-  let newLev = callGetNewLevelAPI(levelNumber);
+  //console.log(levelNumber + "Is run");
+
+  const newLev = callGetNewLevelAPI(levelNumber);
+
+  showLevelStar(0);
 
   const levelChange = document.getElementById("levelNum");
   levelChange.textContent = `level ${newLev.levelNumber}`;
@@ -39,5 +40,9 @@ export async function showLevelStar(levelScore) {
     star1.style.display = "inline-block";
     star2.style.display = "inline-block";
     star3.style.display = "inline-block";
+  } else if(levelScore === 0) {
+    star1.style.display = "none";
+    star2.style.display = "none";
+    star3.style.display = "none";
   }
 }

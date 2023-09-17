@@ -1,0 +1,27 @@
+body {
+  margin: 0%;
+}
+
+#gameOver {
+  position: fixed;
+  display: none;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+#win {
+  position: fixed;
+
+}
+
+.wordLevel {
+    position: relative;
+    font-size: 72px;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.completeImg {
+}
