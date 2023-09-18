@@ -57,3 +57,19 @@ window.onload = function () {
   closeCenterModal1();
   closeCenterModal2();
 };
+
+function addInputLine()
+{
+	const codeInput = document.getElementById("code-input");
+	const newdropdown = document.createElement("div");
+  	newdropdown.innerHTML = `
+    <label for="movement" class="order-dropdown"> 1 : </label>
+    <select id="movement-choice" class="dropdown-select">
+    <option disabled>--Choose Option--</option>
+    <option value="Walk" class="dropdown-choice">Walk()</option>
+    <option value="Jump" class="dropdown-choice">Jump()</option>
+    <option value="Turn left" class="dropdown-choice">Turn left()</option>
+    <option value="Turn right" class="dropdown-choice">Turn right()</option>
+    </select>`;
+  	codeInput.appendChild(newdropdown);
+}
