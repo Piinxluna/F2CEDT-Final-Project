@@ -7,7 +7,7 @@
  * @property {Array} momDuckStartPos
  * @property {Array} babyDuckPos
  * @property {Array} goalPos
- * @property {string} codeGuide
+ * @property {Object} codeGuide
  * @property {string} hint
  */
 
