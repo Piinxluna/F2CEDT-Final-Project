@@ -8,6 +8,7 @@
     <script type="module" src="./scripts/main.js"></script>
     <link type="text/css" rel="stylesheet" href="style.css">
     <link type="text/css" rel="stylesheet" href="codeinput.css" />
+    <link type="text/css" rel="stylesheet" href="nextlevel.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,6 +18,29 @@
   </head>
 
   <body>
+    <section id="gameOver">
+      <div id="win">
+        <h1 class="wordLevel">
+          Level Complete!
+        </h1>
+        <img 
+          class="completeImg"
+          src="./src/DuckComplete.gif"
+          />
+        <button class="endGameBut">play again</button>
+        <button class="endGameBut">next level</button>
+      </div>
+      <div id="lose">
+        <h1 class="wordLevel">
+          Game Over
+        </h1>
+        <img 
+          class="completeImg"
+          src="./src/DuckComplete.gif"
+          />
+        <button class="endGameBut">play again</button>
+      </div>
+    </section>
     <section id="mainPart">
       <!-- map -->
       <div class="mainMap">
