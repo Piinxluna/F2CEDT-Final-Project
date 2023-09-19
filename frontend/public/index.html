@@ -1,129 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>เกมจ้า</title>
-    <script src="./scripts/script.js"></script>
-    <script type="module" src="./scripts/main.js"></script>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link type="text/css" rel="stylesheet" href="codeinput.css" />
-    <link type="text/css" rel="stylesheet" href="nextlevel.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <section id="gameOver">
-      <div id="win">
-        <h1 class="wordLevel">
-          Level Complete!
-        </h1>
-        <img 
-          class="completeImg"
-          src="./src/DuckComplete.gif"
-          />
-        <button class="endGameBut">play again</button>
-        <button class="endGameBut">next level</button>
-      </div>
-      <div id="lose">
-        <h1 class="wordLevel">
-          Game Over
-        </h1>
-        <img 
-          class="completeImg"
-          src="./src/DuckComplete.gif"
-          />
-        <button class="endGameBut">play again</button>
-      </div>
-    </section>
-    <section id="mainPart">
-      <!-- map -->
-      <div class="mainMap">
-        <img src="./src/Map.png" class="centerimg" alt="map pic" />
-      </div>
-      <div class="underMap">
-        <!-- level bar -->
-        <div class="levelScore">
-          <img
-            id="star1"
-            class="star"
-            src="./src/vecteezy_star.jpg"
-            width="6%"
-            height="auto"
-            alt="star"
-          />
-          <img
-            id="star2"
-            class="star"
-            src="./src/vecteezy_star.jpg"
-            width="6%"
-            height="auto"
-            alt="star"
-          />
-          <img
-            id="star3"
-            class="star"
-            src="./src/vecteezy_star.jpg"
-            width="6%"
-            height="auto"
-            alt="star"
-          />
-          <h1 id="levelNum">Level 0</h1>
-        </div>
-        
-        <div class="help1">
-          <button class="fillButton" onclick="openCenterModal1()">
-            <h3>hint</h3>
-          </button>
-          <div id="centerModal1" class="center-modal">
-            <div class="center-modal-content">
-              <span class="close" onclick="closeCenterModal1()">close</span>
-              <p id="hintContent">Hint จ้าาาา Hint</p>
-            </div>
-          </div>
-        </div>
-        <div class="help2">
-          <button class="fillButton" onclick="openCenterModal2()">
-            <h3>?</h3>
-          </button>
-          <div id="centerModal2" class="center-modal">
-            <div class="center-modal-content">
-              <span class="close" onclick="closeCenterModal2()">close</span>
-              <p id="helpContent">เล่นไงง้าบ</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      </section>
-      
-      <div class="changeAftShow">
-        <h3>
-        <button id="hideButton" onclick="hidecode()">hide</button>
-        <button id="runCodeButton" class="borderButton">run code</button>
-      </h3>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เกมจ้า</title>
+  <script src="./scripts/script.js"></script>
+  <script type="module" src="./scripts/main.js"></script>
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <link type="text/css" rel="stylesheet" href="codeinput.css" />
+  <link type="text/css" rel="stylesheet" href="nextlevel.css">
+  <link type="text/css" rel="stylesheet" href="duckMove.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <section id="gameOver">
+    <div id="win">
+      <h1 class="wordLevel">
+        Level Complete!
+      </h1>
+      <img class="completeImg" src="./src/DuckComplete.gif" />
+      <button class="endGameBut">play again</button>
+      <button class="endGameBut">next level</button>
     </div>
-    <section id="mainCode">
-      <div id="mainAns">
-        <h2 class="dropdown-title">Code here</h2>
-        <div id="code-input">
+    <div id="lose">
+      <h1 class="wordLevel">
+        Game Over
+      </h1>
+      <img class="completeImg" src="./src/DuckComplete.gif" />
+      <button class="endGameBut">play again</button>
+    </div>
+  </section>
+  <section id="mainPart">
+    <!-- map -->
+    <div class="mainMap">
+      <!-- <img src="./src/Map.png" alt="map pic" id="map-background" class="centerimg" /> -->
+      <img src="./src/Map.png" alt="map pic" id="map-background" />
+      <img src="./src/2495304383_06b40b804a_o.jpg" alt="mom duck pic" id="mom-duck-pic" />
+    </div>
+    <div class="underMap">
+      <!-- level bar -->
+      <div class="levelScore">
+        <img id="star1" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="star2" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="star3" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <h1 id="levelNum">Level 0</h1>
+      </div>
+
+      <div class="help1">
+        <button class="fillButton" onclick="openCenterModal1()">
+          <h3>hint</h3>
+        </button>
+        <div id="centerModal1" class="center-modal">
+          <div class="center-modal-content">
+            <span class="close" onclick="closeCenterModal1()">close</span>
+            <p id="hintContent">Hint จ้าาาา Hint</p>
+          </div>
+        </div>
+      </div>
+      <div class="help2">
+        <button class="fillButton" onclick="openCenterModal2()">
+          <h3>?</h3>
+        </button>
+        <div id="centerModal2" class="center-modal">
+          <div class="center-modal-content">
+            <span class="close" onclick="closeCenterModal2()">close</span>
+            <p id="helpContent">เล่นไงง้าบ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="changeAftShow">
+    <h3>
+      <button id="hideButton" onclick="hidecode()">hide</button>
+      <button id="runCodeButton" class="borderButton">run code</button>
+    </h3>
+  </div>
+  <section id="mainCode">
+    <div id="mainAns">
+      <h2 class="dropdown-title">Code here</h2>
+      <div id="code-input">
         <div>
           <label for="movement" class="order-dropdown"> 1 : </label>
           <select id="movement-choice" class="dropdown-select">
-          <option disabled>--Choose Option--</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
+            <option disabled>--Choose Option--</option>
+            <option value="Walk" class="dropdown-choice">Walk()</option>
+            <option value="Jump" class="dropdown-choice">Jump()</option>
+            <option value="Turn left" class="dropdown-choice">Turn left()</option>
+            <option value="Turn right" class="dropdown-choice">Turn right()</option>
           </select>
         </div>
-        </div>
-        <button id="add-input-button">add</button>
-        <div>
-    </section>
-  </body>
+      </div>
+      <button id="add-input-button">add</button>
+      <div>
+  </section>
+</body>
+
 </html>
