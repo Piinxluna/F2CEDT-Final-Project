@@ -10,5 +10,6 @@ export async function callGetNewLevelAPI(levelNumber) {
     `${BACKEND_URL}/getNewLevel/${levelNumber}`
   ).then((r) => r.json());
 
-  return newLevel;
+  console.log(newLevel[0]);
+  return newLevel[0];
 }
