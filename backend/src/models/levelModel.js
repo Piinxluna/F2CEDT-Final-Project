@@ -17,6 +17,10 @@ const levelSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+  momDuckStartDir: {
+    type: Number,
+    required: true,
+  },
   babyDuckPos: {
     type: Array,
     required: true,
@@ -26,7 +30,7 @@ const levelSchema = new mongoose.Schema({
     required: true,
   },
   codeGuide: {
-    type: String,
+    type: Object,
     required: true,
   },
   hint: {

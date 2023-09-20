@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,12 +10,12 @@
     <link type="text/css" rel="stylesheet" href="style.css">
     <link type="text/css" rel="stylesheet" href="codeinput.css" />
     <link type="text/css" rel="stylesheet" href="nextlevel.css">
+    <link type="text/css" rel="stylesheet" href="duckMove.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
   </head>
 
   <body>
@@ -106,76 +107,26 @@
         <button id="hideButton" onclick="hidecode()">hide</button>
         <button id="runCodeButton" class="borderButton">run code</button>
       </h3>
-    </div>
-    <section id="mainCode">
-      <div class="mainAns">
-        <h2 class="dropdown-title">Code here</h2>
+    </section>
+  </div>
+  <section id="mainCode">
+    <div id="mainAns">
+      <h2 class="dropdown-title">Code here</h2>
+      <div id="code-input">
         <div>
-        <label for="movement" class="order-dropdown"> 1 : </label>
-        <select id="movement-choice" class="dropdown-select">
-          <option disabled>--Choose Option--</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
-        </select>
-        </div>
-        <div>
-            <h3> </h3>
-            <label for="movement" class="order-dropdown">2 : </label>
-        <select id="movement-choice" class="dropdown-select">
-          <option disabled>--Choose Option--</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
-        </select>
-        </div>
-        <div>
-            <h3> </h3>
-            <label for="movement" class="order-dropdown">3 : </label>
-        <select id="movement-choice" class="dropdown-select">
-          <option disabled>--Choose Option--</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
-        </select>
-        </div>
-        <div>
-            <h3> </h3>
-            <label for="movement" class="order-dropdown">4 : </label>
-        <select id="movement-choice" class="dropdown-select">
-          <option disabled>--Choose Option--</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
-        </select>
-        </div>
-        <div>
-            <h3> </h3>
-            <label for="movement" class="order-dropdown">5 : </label>
-        <select id="movement-choice" class="dropdown-select">
-          <option disabled>--Choose Option--</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
-        </select>
-        </div>
-        <div>
-            <h3> </h3>
-            <label for="movement" class="order-dropdown">6 : </label>
-        <select id="movement-choice" class="dropdown-select">
-          <option disabled>--Choose Option--</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
-        </select>
+          <label for="movement" class="order-dropdown"> 1 : </label>
+          <select id="movement-choice" class="dropdown-select">
+            <option disabled>--Choose Option--</option>
+            <option value="Walk" class="dropdown-choice">Walk()</option>
+            <option value="Jump" class="dropdown-choice">Jump()</option>
+            <option value="Turn left" class="dropdown-choice">Turn left()</option>
+            <option value="Turn right" class="dropdown-choice">Turn right()</option>
+          </select>
         </div>
       </div>
-    </section>
-  </body>
+      <button id="add-input-button">add</button>
+      <div>
+  </section>
+</body>
+
 </html>
