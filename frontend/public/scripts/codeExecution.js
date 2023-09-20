@@ -56,10 +56,10 @@ export async function showNewLevel(levelNumber) {
   let newLev = await callGetNewLevelAPI(levelNumber);
 
   //change level number
-  document.getElementById("levelNum").textContent = `Level ${nextLevel.levelNumber}`;
+  document.getElementById("levelNum").textContent = `Level ${newLev.levelNumber}`;
 
   //change mapfile
-  document.getElementById("mapLevel").src = `${nextLevel.mapfile}`;
+  document.getElementById("mapLevel").src = `${newLev.mapfile}`;
 
   //change map array
   //change mom duck position
@@ -67,10 +67,10 @@ export async function showNewLevel(levelNumber) {
   //change goal position
 
   //change code guide
-  document.getElementById("helpContent").textContent = `${nextLevel.codeGuide}`;
+  document.getElementById("helpContent").textContent = `${newLev.codeGuide}`;
 
   //change hint
-  document.getElementById("hintContent").textContent = `${nextLevel.hint}`;
+  document.getElementById("hintContent").textContent = `${newLev.hint}`;
 
   var mapSize = document.getElementById("map-background").clientWidth;
   var blockSize = mapSize / newLev.mapArray.length;
