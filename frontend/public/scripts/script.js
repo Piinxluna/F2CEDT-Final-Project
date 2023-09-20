@@ -57,3 +57,15 @@ window.onload = function () {
   closeCenterModal1();
   closeCenterModal2();
 };
+
+function playNextLevel() {
+  const finPage = document.getElementById("gameOver");
+  finPage.style.display = "none";
+  //add showNewLevel(n+1)
+}
+
+function playThisLevel() {
+  const finPage = document.getElementById("gameOver");
+  finPage.style.display = "none";
+  //add showNewLevel(n)
+}

@@ -11,15 +11,26 @@ export async function calcResult() {
 
 export async function showNewLevel(levelNumber) {
  
-  let newLev = callGetNewLevelAPI(levelNumber);
+  let nextLevel = callGetNewLevelAPI(levelNumber);
 
   showLevelStar(0);
 
-  const levelChange = document.getElementById("levelNum");
-  levelChange.textContent = `Level ${newLev.levelNumber}`;
+  //change level number
+  document.getElementById("levelNum").textContent = `Level ${nextLevel.levelNumber}`;
 
-  const hintChange = document.getElementById("hintContent");
-  hintChange.textContent = `${newLev.hint}`;
+  //change mapfile
+  document.getElementById("mapLevel").src = `${nextLevel.mapfile}`;
+
+  //change map array
+  //change mom duck position
+  //change baby duck position
+  //change goal position
+
+  //change code guide
+  document.getElementById("helpContent").textContent = `${nextLevel.codeGuide}`;
+
+  //change hint
+  document.getElementById("hintContent").textContent = `${nextLevel.hint}`;
 }
 
 export async function showLevelStar(levelScore) {
@@ -42,5 +53,21 @@ export async function showLevelStar(levelScore) {
     star1.style.display = "none";
     star2.style.display = "none";
     star3.style.display = "none";
+  }
+}
+
+export async function toFinalPage(levelScore) {
+  const finPage = document.getElementById("gameOver");
+  finPage.style.display = "block";
+
+  const winPage = document.getElementById("win");
+  const losePage = document.getElementById("lose");
+  // let thisLevel = callGetNewLevelAPI(levelNumber);
+  if(levelScore===0) {
+    winPage.style.display = "none";
+    losePage.style.display = "block";
+  } else {
+    winPage.style.display = "block";
+    losePage.style.display = "none";
   }
 }

@@ -27,8 +27,8 @@
           class="completeImg"
           src="./src/DuckComplete.gif"
           />
-        <button class="endGameBut">play again</button>
-        <button class="endGameBut">next level</button>
+        <button onclick="playThisLevel()" class="endGameBut">play again</button>
+        <button onclick="playNextLevel()" class="endGameBut">next level</button>
       </div>
       <div id="lose">
         <h1 class="wordLevel">
@@ -38,13 +38,13 @@
           class="completeImg"
           src="./src/DuckComplete.gif"
           />
-        <button class="endGameBut">play again</button>
+        <button onclick="playThisLevel()" class="endGameBut">play again</button>
       </div>
     </section>
     <section id="mainPart">
       <!-- map -->
       <div class="mainMap">
-        <img src="./src/Map.png" class="centerimg" alt="map pic" />
+        <img src="./src/Map.png" id="mapLevel" class="centerimg" alt="map pic" />
       </div>
       <div class="underMap">
         <!-- level bar -->
