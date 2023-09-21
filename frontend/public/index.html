@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>เกมจ้า</title>
-  <script src="./scripts/script.js"></script>
   <script type="module" src="./scripts/main.js"></script>
+  <script type="module" src="./scripts/script.js"></script>
   <link type="text/css" rel="stylesheet" href="style.css">
   <link type="text/css" rel="stylesheet" href="codeinput.css" />
   <link type="text/css" rel="stylesheet" href="nextlevel.css">
@@ -25,15 +25,21 @@
         Level Complete!
       </h1>
       <img class="completeImg" src="./src/DuckComplete.gif" />
-      <button onclick="playThisLevel()" class="endGameBut">play again</button>
-      <button onclick="playNextLevel()" class="endGameBut">next level</button>
+      <div id="win-star">
+        <img id="result-star1" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="result-star2" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="result-star3" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+      </div>
+      <button class="endGameBut" id="play-again-button-win">play again</button>
+      <button class="endGameBut" id="next-level-button">next level</button>
     </div>
     <div id="lose">
       <h1 class="wordLevel">
         Game Over
       </h1>
       <img class="completeImg" src="./src/MomDuck.gif" />
-      <button onclick="playThisLevel()" class="endGameBut">play again</button>
+      <h3 id="error-message"></h3>
+      <button class="endGameBut" id="play-again-button-lose">play again</button>
     </div>
   </section>
   <section id="mainPart">
@@ -48,9 +54,9 @@
     <div class="underMap">
       <!-- level bar -->
       <div class="levelScore">
-        <img id="star1" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
-        <img id="star2" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
-        <img id="star3" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="level-star1" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="level-star2" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="level-star3" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
         <h1 id="levelNum">Level 0</h1>
       </div>
 

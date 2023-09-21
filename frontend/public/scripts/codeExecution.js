@@ -8,6 +8,16 @@ var exampleCodeLists = [
   "Jump",
   "Turn left",
   "Walk",
+  "Walk",
+  "Walk",
+  "Walk",
+  "Walk",
+  "Walk",
+  "Walk",
+  "Walk",
+  "Walk",
+  "Walk",
+  "Walk",
   "Jump",
   "Walk",
   "Turn left",
@@ -45,13 +55,8 @@ export async function runCode() {
   var codeLists = exampleCodeLists;
 
   var result = await calcResult(codeLists);
-  showLevelStar(result.babyCollected);
-  if (result.errorRes != null) {
-    // Show error message
-  }
-  if (result.isPass === true) {
-    toFinalPage(result.babyCollected);
-  }
+  showStar("level", result.babyCollected);
+  toFinalPage(result);
 }
 
 export async function calcResult(codeLists) {
@@ -61,6 +66,7 @@ export async function calcResult(codeLists) {
   var isError = false;
   var errorRes = null;
   for (let data of codeLists) {
+    console.log(data, errorWalk);
     isError = false;
     if (data == "Walk") {
       nextTarget(1);
@@ -118,7 +124,6 @@ export async function calcResult(codeLists) {
       errorWalk = 0;
     }
 
-    console.log(pos, goal);
     if (isSamePoint(pos, goal)) {
       // Walk to finish point
       isPass = true;
@@ -209,10 +214,10 @@ export async function showNewLevel(levelNumber) {
   // Call function show code input
 }
 
-export async function showLevelStar(levelScore) {
-  const star1 = document.getElementById("star1");
-  const star2 = document.getElementById("star2");
-  const star3 = document.getElementById("star3");
+export async function showStar(type, levelScore) {
+  const star1 = document.getElementById(type + "-star1");
+  const star2 = document.getElementById(type + "-star2");
+  const star3 = document.getElementById(type + "-star3");
   if (levelScore === 1) {
     star1.style.display = "inline-block";
     star2.style.display = "none";
@@ -232,18 +237,20 @@ export async function showLevelStar(levelScore) {
   }
 }
 
-export async function toFinalPage(levelScore) {
+export async function toFinalPage(res) {
   const finPage = document.getElementById("gameOver");
   finPage.style.display = "block";
 
   const winPage = document.getElementById("win");
   const losePage = document.getElementById("lose");
-  // let thisLevel = callGetNewLevelAPI(levelNumber);
-  if (levelScore === 0) {
-    winPage.style.display = "none";
-    losePage.style.display = "block";
-  } else {
+
+  if (res.isPass == true) {
     winPage.style.display = "block";
     losePage.style.display = "none";
+    showStar("result", res.babyCollected);
+  } else {
+    winPage.style.display = "none";
+    losePage.style.display = "block";
+    document.getElementById("error-message").innerText = res.errorRes;
   }
 }
