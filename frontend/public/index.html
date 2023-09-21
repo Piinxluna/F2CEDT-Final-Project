@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>เกมจ้า</title>
-  <script src="./scripts/script.js"></script>
   <script type="module" src="./scripts/main.js"></script>
+  <script type="module" src="./scripts/script.js"></script>
   <link type="text/css" rel="stylesheet" href="style.css">
   <link type="text/css" rel="stylesheet" href="codeinput.css" />
   <link type="text/css" rel="stylesheet" href="nextlevel.css">
@@ -25,30 +25,38 @@
         Level Complete!
       </h1>
       <img class="completeImg" src="./src/DuckComplete.gif" />
-      <button class="endGameBut">play again</button>
-      <button class="endGameBut">next level</button>
+      <div id="win-star">
+        <img id="result-star1" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="result-star2" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="result-star3" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+      </div>
+      <button class="endGameBut" id="play-again-button-win">play again</button>
+      <button class="endGameBut" id="next-level-button">next level</button>
     </div>
     <div id="lose">
       <h1 class="wordLevel">
         Game Over
       </h1>
-      <img class="completeImg" src="./src/DuckComplete.gif" />
-      <button class="endGameBut">play again</button>
+      <img class="completeImg" src="./src/MomDuck.gif" />
+      <h3 id="error-message"></h3>
+      <button class="endGameBut" id="play-again-button-lose">play again</button>
     </div>
   </section>
   <section id="mainPart">
     <!-- map -->
     <div class="mainMap">
-      <!-- <img src="./src/Map.png" alt="map pic" id="map-background" class="centerimg" /> -->
-      <img src="./src/Map.png" alt="map pic" id="map-background" />
-      <img src="./src/2495304383_06b40b804a_o.jpg" alt="mom duck pic" id="mom-duck-pic" />
+      <img src="./src/Map.png" id="map-background" alt="map pic" />
+      <img src="./src/MomDuck.gif" id="mom-duck-pic" alt="mom duck pic" class="duck-pic" />
+      <img src="./src/BabyDuck.jpg" id="baby-duck-pic-0" alt="mom duck pic" class="duck-pic" />
+      <img src="./src/BabyDuck.jpg" id="baby-duck-pic-1" alt="mom duck pic" class="duck-pic" />
+      <img src="./src/BabyDuck.jpg" id="baby-duck-pic-2" alt="mom duck pic" class="duck-pic" />
     </div>
     <div class="underMap">
       <!-- level bar -->
       <div class="levelScore">
-        <img id="star1" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
-        <img id="star2" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
-        <img id="star3" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="level-star1" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="level-star2" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
+        <img id="level-star3" class="star" src="./src/vecteezy_star.jpg" width="6%" height="auto" alt="star" />
         <h1 id="levelNum">Level 0</h1>
       </div>
 
@@ -82,6 +90,7 @@
       <button id="hideButton" onclick="hidecode()">hide</button>
       <button id="runCodeButton" class="borderButton">run code</button>
     </h3>
+    </section>
   </div>
   <section id="mainCode">
     <div id="mainAns">

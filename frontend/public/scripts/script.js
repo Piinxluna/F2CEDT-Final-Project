@@ -9,22 +9,22 @@ function hidecode() {
     changeText.textContent = "hide";
     changeText.style.color = "#fbf7f8";
     changeMapSize.style.width = "65%";
-    for(let i=0; i<mapCenter.length; ++i) { 
-      mapCenter[i].style.width= "50%" 
+    for (let i = 0; i < mapCenter.length; ++i) {
+      mapCenter[i].style.width = "50%";
     }
-    for(let i=0; i<runCode.length; ++i) { 
-      runCode[i].style.bottom= "5%" 
+    for (let i = 0; i < runCode.length; ++i) {
+      runCode[i].style.bottom = "5%";
     }
   } else {
     x.style.display = "none";
     changeText.textContent = "show";
     changeText.style.color = "#211217";
     changeMapSize.style.width = "100%";
-    for(let i=0; i<mapCenter.length; ++i) { 
-      mapCenter[i].style.width= "40%" 
+    for (let i = 0; i < mapCenter.length; ++i) {
+      mapCenter[i].style.width = "40%";
     }
-    for(let i=0; i<runCode.length; ++i) { 
-      runCode[i].style.bottom= "11%" 
+    for (let i = 0; i < runCode.length; ++i) {
+      runCode[i].style.bottom = "11%";
     }
   }
 }
@@ -32,7 +32,7 @@ function hidecode() {
 // เปิดหน้า hint
 function openCenterModal1() {
   var centerModal1 = document.getElementById("centerModal1");
-    centerModal1.style.display = "block";
+  centerModal1.style.display = "block";
 }
 
 // ปิดหน้า hint
@@ -58,11 +58,10 @@ window.onload = function () {
   closeCenterModal2();
 };
 
-function addInputLine()
-{
-	const codeInput = document.getElementById("code-input");
-	const newdropdown = document.createElement("div");
-  	newdropdown.innerHTML = `
+function addInputLine() {
+  const codeInput = document.getElementById("code-input");
+  const newdropdown = document.createElement("div");
+  newdropdown.innerHTML = `
     <label for="movement" class="order-dropdown"> 1 : </label>
     <select id="movement-choice" class="dropdown-select">
     <option disabled>--Choose Option--</option>
@@ -71,5 +70,5 @@ function addInputLine()
     <option value="Turn left" class="dropdown-choice">Turn left()</option>
     <option value="Turn right" class="dropdown-choice">Turn right()</option>
     </select>`;
-  	codeInput.appendChild(newdropdown);
+  codeInput.appendChild(newdropdown);
 }

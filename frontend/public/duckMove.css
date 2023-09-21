@@ -1,9 +1,10 @@
 #map-background {
   height: 80%;
+  width: auto;
   position: absolute;
   z-index: -1;
 }
-#mom-duck-pic {
+.duck-pic {
   position: absolute;
   left: 0px;
   top: 0px;
