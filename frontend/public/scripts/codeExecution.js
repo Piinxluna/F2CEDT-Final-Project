@@ -2,30 +2,6 @@ import { callGetNewLevelAPI } from './api.js'
 import { displayPos, hideBabyDuck, isSamePoint, setUpMap } from './duckMove.js'
 /** @typedef {import("./config.js").Level} Level */
 
-// For test only -> The final version should get arrays from codeInput field, then make it into array within runCode() and pass it to calcResult()
-var exampleCodeLists = [
-	'Walk',
-	'Jump',
-	'Turn left',
-	'Walk',
-	'Jump',
-	'Walk',
-	'Walk',
-	'Walk',
-	'Turn left',
-	'Walk',
-	'Walk',
-	'Walk',
-	'Walk',
-	'Walk',
-	'Jump',
-	'Walk',
-	'Turn left',
-	'Walk',
-	'Walk',
-	'Walk',
-]
-
 var duckPic = document.getElementById('mom-duck-pic')
 var blockSize
 var dir = 0 // 1 = Up, 2 = Right, 3 = Down, 4 = Left,
@@ -33,35 +9,71 @@ var goal = [0, 0]
 var startPos = []
 var babyDuckPos = []
 var mapArray = []
+var codeGuide = {}
 
 var pos = [0, 0]
 var nextPos = []
+var inputInd = 1
+var codeLists = []
 
 export function addInputLine() {
 	const codeInput = document.getElementById('code-input')
-	const newdropdown = document.createElement('div')
-	newdropdown.innerHTML = `
-    <h6 class="space"></h6>
-    <label for="movement" class="order-dropdown"> 1 : </label>
-    <select id="movement-choice" class="dropdown-select">
-    <option disabled>-Choose Option-</option>
-    <option value="Walk" class="dropdown-choice">Walk()</option>
-    <option value="Jump" class="dropdown-choice">Jump()</option>
-    <option value="Turn left" class="dropdown-choice">Turn left()</option>
-    <option value="Turn right" class="dropdown-choice">Turn right()</option>
-    </select>`
-	codeInput.appendChild(newdropdown)
+
+	if (codeInput.children.length > codeGuide.codeLimit - 1) {
+		alert('เพิ่มโค้ดเต็มจำนวนแล้ว!')
+	} else {
+		inputInd++
+		const newdropdown = document.createElement('div')
+		let optionHTML = `<h6 class="space"></h6>`
+		optionHTML += `<label for="movement-${inputInd}" class="order-dropdown"> ${inputInd} : </label>`
+		optionHTML += `<select id="movement-${inputInd}" class="dropdown-select">
+    <option disabled>-Choose Option-</option>`
+		for (let option of codeGuide.choice) {
+			optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
+		}
+		optionHTML += `</select>`
+		newdropdown.innerHTML = optionHTML
+		newdropdown.setAttribute('id', `movement-div-${inputInd}`)
+		codeInput.appendChild(newdropdown)
+	}
+}
+
+export function deleteInputLine() {
+	if (inputInd > 1) {
+		let lastLine = document.getElementById(`movement-div-${inputInd}`)
+		lastLine.remove()
+		inputInd--
+	}
 }
 
 export async function runCode() {
 	setUpMap(blockSize, startPos, dir, babyDuckPos)
 
 	// get arrays from codeInput field
-	var codeLists = exampleCodeLists
+	for (let i = 1; i <= inputInd; i++) {
+		let input = document.getElementById(`movement-${i}`)
+		codeLists.push(input.value)
+	}
+	console.log(codeLists)
 
 	var result = await calcResult(codeLists)
 	showStar('level', result.babyCollected)
 	toFinalPage(result)
+
+	inputInd = 1
+	codeLists = []
+	const codeInput = document.getElementById('code-input')
+	codeInput.innerHTML = `
+    <div id="movement-div-1">
+      <label for="movement-1" class="order-dropdown"> 1 : </label>
+      <select id="movement-1" class="dropdown-select">
+        <option disabled>-Choose Option-</option>
+        <option value="walk" class="dropdown-choice">walk()</option>
+        <option value="jump" class="dropdown-choice">jump()</option>
+        <option value="turn left" class="dropdown-choice">turn left()</option>
+        <option value="turn right" class="dropdown-choice">turn right()</option>
+      </select>
+    </div>`
 }
 
 export async function calcResult(codeLists) {
@@ -69,62 +81,37 @@ export async function calcResult(codeLists) {
 	var errorWalk = 0
 	var isPass = false
 	var isError = false
-	var errorRes = null
+	var errorRes = 'เดินไปไม่ถึงอ่า T^T'
 	for (let data of codeLists) {
-		console.log(data, errorWalk)
 		isError = false
-		if (data == 'Walk') {
-			nextTarget(1)
-			if (getPosData(nextPos) == '-') {
-				pos = nextPos
-				await displayPos(
-					duckPic,
-					pos.map(x => x * blockSize),
-					blockSize
-				)
-			} else {
-				isError = true
-			}
-		} else if (data == 'Jump') {
-			nextTarget(1)
-			if (getPosData(nextPos) == '-') {
-				pos = nextPos
-				await displayPos(
-					duckPic,
-					pos.map(x => x * blockSize),
-					blockSize
-				)
-			} else if (getPosData(nextPos) == 'r') {
-				nextTarget(2)
-				pos = nextPos
-				await displayPos(
-					duckPic,
-					pos.map(x => x * blockSize),
-					blockSize
-				)
-			} else {
-				isError = true
-			}
-		} else if (data == 'Turn left') {
-			dir--
-			dir = dir == 0 ? 4 : dir
-		} else if (data == 'Turn right') {
-			dir++
-			dir = dir == 5 ? 1 : dir
-		} else if (data.slice(0, 3) == 'For') {
+		if (data == 'walk') {
+			await walk()
+		} else if (data == 'jump') {
+			await jump()
+		} else if (data == 'turn left') {
+			turn(-1)
+			// await turn(-1)
+		} else if (data == 'turn right') {
+			turn(1)
+			// await turn(1)
+		} else if (data.slice(0, 3) == 'for') {
 		}
 
 		for (let i in babyDuckPos) {
 			if (isSamePoint(pos, babyDuckPos[i])) {
 				babyCollected++
-				hideBabyDuck(babyDuckPos[i].map(x => x * blockSize))
-				babyDuckPos.splice(i, 1)
+				hideBabyDuck(babyDuckPos[i], babyDuckPos)
 			}
 		}
+		console.log(pos, errorWalk)
 
-		// If can't walk -> errorWalk++ -> reset every time after can walk
 		if (isError == true) {
 			errorWalk++
+			await displayPos(
+				duckPic,
+				pos.map(x => x * blockSize),
+				blockSize
+			)
 		} else {
 			errorWalk = 0
 		}
@@ -140,7 +127,7 @@ export async function calcResult(codeLists) {
 	}
 	return { errorRes, isPass, babyCollected }
 
-	// ---------- functions used to calcresult ----------
+	// ---------- functions used to calcResult ----------
 	function nextTarget(i) {
 		if (dir == 1) {
 			nextPos = [pos[0] - i, pos[1]]
@@ -165,6 +152,51 @@ export async function calcResult(codeLists) {
 			return mapArray[pos[0]][pos[1]]
 		}
 	}
+
+	async function walk() {
+		nextTarget(1)
+		if (getPosData(nextPos) == '-') {
+			pos = nextPos
+			await displayPos(
+				duckPic,
+				pos.map(x => x * blockSize),
+				blockSize
+			)
+		} else {
+			isError = true
+		}
+	}
+
+	async function jump() {
+		nextTarget(1)
+		if (getPosData(nextPos) == '-') {
+			pos = nextPos
+			await displayPos(
+				duckPic,
+				pos.map(x => x * blockSize),
+				blockSize
+			)
+		} else if (getPosData(nextPos) == 'r') {
+			nextTarget(2)
+			pos = nextPos
+			await displayPos(
+				duckPic,
+				pos.map(x => x * blockSize),
+				blockSize
+			)
+		} else {
+			isError = true
+		}
+	}
+
+	function turn(newDir) {
+		dir += newDir
+		if (dir == 0) {
+			dir = 4
+		} else if (dir == 5) {
+			dir = 1
+		}
+	}
 }
 
 export async function showNewLevel(levelNumber) {
@@ -183,15 +215,16 @@ export async function showNewLevel(levelNumber) {
 
 	//change map array
 	mapArray = newLev.mapArray
+	codeGuide = newLev.codeGuide
 
 	var mapSize = document.getElementById('map-background').clientWidth
 	blockSize = mapSize / newLev.mapArray.length
 
 	startPos = newLev.momDuckStartPos
+	pos = startPos
 
 	dir = newLev.momDuckStartDir
-	goal[0] = newLev.goalPos[0]
-	goal[1] = newLev.goalPos[1]
+	goal = newLev.goalPos
 
 	for (let i = 0; i < newLev.babyDuckPos.length; i++) {
 		babyDuckPos[i] = newLev.babyDuckPos[i]

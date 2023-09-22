@@ -31,7 +31,7 @@ export async function callGetNewLevelAPI(levelNumber) {
 		],
 		goalPos: [4, 0],
 		codeGuide: {
-			choice: ['walk()', 'jump()', 'turnLeft()', 'turnRight()'],
+			choice: ['walk', 'jump', 'turn left', 'turn right'],
 			codeLimit: 20,
 			forLimit: 0,
 		},
