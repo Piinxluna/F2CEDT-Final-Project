@@ -62,7 +62,7 @@ function addInputLine() {
   const codeInput = document.getElementById("code-input");
   const newdropdown = document.createElement("div");
   newdropdown.innerHTML = `
-    <p class="space"></h6>
+    <h6 class="space"></h6>
     <label for="movement" class="order-dropdown"> 1 : </label>
     <select id="movement-choice" class="dropdown-select">
     <option disabled>-Choose Option-</option>
