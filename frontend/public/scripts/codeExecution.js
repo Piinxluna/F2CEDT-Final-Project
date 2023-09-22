@@ -1,5 +1,5 @@
 import { callGetNewLevelAPI } from "./api.js";
-import { displayPos, hideBabyDuck, isSamePoint } from "./duckMove.js";
+import { displayPos, hideBabyDuck, isSamePoint, setUpMap } from "./duckMove.js";
 /** @typedef {import("./config.js").Level} Level */
 
 // For test only -> The final version should get arrays from codeInput field, then make it into array within runCode() and pass it to calcResult()
@@ -8,11 +8,11 @@ var exampleCodeLists = [
   "Jump",
   "Turn left",
   "Walk",
+  "Jump",
   "Walk",
   "Walk",
   "Walk",
-  "Walk",
-  "Walk",
+  "Turn left",
   "Walk",
   "Walk",
   "Walk",
@@ -38,20 +38,9 @@ var pos = [0, 0];
 var nextPos = [];
 
 export async function runCode() {
-  duckPic.height = blockSize;
-  duckPic.width = blockSize;
-  pos = startPos;
-  await displayPos(
-    duckPic,
-    pos.map((x) => x * blockSize),
-    blockSize
-  );
-  for (let i = 0; i < 3; i++) {
-    let babyDuck = document.getElementById("baby-duck-pic-" + i);
-    babyDuck.style.display = "block";
-  }
+  setUpMap(blockSize, startPos, dir, babyDuckPos);
 
-  /* code here */
+  // get arrays from codeInput field
   var codeLists = exampleCodeLists;
 
   var result = await calcResult(codeLists);
@@ -182,34 +171,17 @@ export async function showNewLevel(levelNumber) {
   var mapSize = document.getElementById("map-background").clientWidth;
   blockSize = mapSize / newLev.mapArray.length;
 
-  //change mom duck position
-  duckPic.height = blockSize;
-  duckPic.width = blockSize;
   startPos = newLev.momDuckStartPos;
-  pos = startPos;
-  displayPos(
-    duckPic,
-    pos.map((x) => x * blockSize),
-    blockSize
-  );
 
-  //change goal position
   dir = newLev.momDuckStartDir;
   goal[0] = newLev.goalPos[0];
   goal[1] = newLev.goalPos[1];
 
-  //change baby duck position
   for (let i = 0; i < newLev.babyDuckPos.length; i++) {
-    let babyDuck = document.getElementById("baby-duck-pic-" + i);
-    babyDuck.height = blockSize;
-    babyDuck.width = blockSize;
-    displayPos(
-      babyDuck,
-      newLev.babyDuckPos[i].map((x) => x * blockSize),
-      blockSize
-    );
     babyDuckPos[i] = newLev.babyDuckPos[i];
   }
+
+  setUpMap(blockSize, startPos, dir, babyDuckPos);
 
   // Call function show code input
 }

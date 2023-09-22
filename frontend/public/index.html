@@ -7,10 +7,10 @@
   <title>เกมจ้า</title>
   <script type="module" src="./scripts/main.js"></script>
   <script type="module" src="./scripts/script.js"></script>
-  <link type="text/css" rel="stylesheet" href="style.css">
-  <link type="text/css" rel="stylesheet" href="codeinput.css" />
-  <link type="text/css" rel="stylesheet" href="nextlevel.css">
-  <link type="text/css" rel="stylesheet" href="duckMove.css">
+  <link type="text/css" rel="stylesheet" href="./css/style.css">
+  <link type="text/css" rel="stylesheet" href="./css/codeinput.css" />
+  <link type="text/css" rel="stylesheet" href="./css/duckMove.css">
+  <link type="text/css" rel="stylesheet" href="./css/nextlevel.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -33,7 +33,7 @@
       <button class="endGameBut" id="play-again-button-win">play again</button>
       <button class="endGameBut" id="next-level-button">next level</button>
     </div>
-     <div id="lose">
+    <div id="lose">
       <h1 class="wordLevel">
         Game Over
       </h1>
@@ -78,7 +78,17 @@
         <div id="centerModal2" class="center-modal">
           <div class="center-modal-content">
             <span class="close" onclick="closeCenterModal2()">close</span>
-            <p id="helpContent">เล่นไงง้าบ</p>
+            <p id="helpContent">
+              โอ๊ะ! แม่เป็ดละสายตาจากลูกเพียงเสี้ยววินาที ลูกเป็ดก็หายไปไหนไม่รู้แล้ว
+              และนั่นเป็นหน้าที่ของ "คุณ"
+              ที่จะช่วยแม่เป็ดตามหาลูกตามเส้นทางที่ถูกต้อง เนื่องจากป่านี้ซับซ้อนและอันตรายอย่างมาก
+              เดินผิดก้าวเดียวอาจจะหายไปตลอดกาลเลยก็ได้!! ดังนั้นคุณจะต้องช่วยแม่เป็ดตามหาลูกๆ
+              และพากลับบ้านอย่างปลอดภัย!
+              โดยการสังเกตและคิดว่าจะให้แม่เป็ดเดินไปทางไหน แล้วเลือกโค้ดในช่องตามที่คิดไว้ได้เลย
+
+              เป้าหมายของเกม : ใช้คำสั่งเพื่อควบคุมแม่เป็ด ให้เดินไปหาลูกเป็ดให้ครบทุกตัว
+              จากนั้นให้เดินไปที่บ้านให้เร็วที่สุด!
+            </p>
           </div>
         </div>
       </div>
@@ -92,21 +102,21 @@
     </h3>
     </section>
   </div>
-     <section id="mainCode">
-      <h2 class="dropdown-title">Code here</h2>
-      <div id="mainAns">
-        <div id="code-input">
+  <section id="mainCode">
+    <h2 class="dropdown-title">Code here</h2>
+    <div id="mainAns">
+      <div id="code-input">
         <div>
           <label for="movement" class="order-dropdown"> 1 : </label>
           <select id="movement-choice" class="dropdown-select">
-          <option disabled>-Choose Option-</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
+            <option disabled>-Choose Option-</option>
+            <option value="Walk" class="dropdown-choice">Walk()</option>
+            <option value="Jump" class="dropdown-choice">Jump()</option>
+            <option value="Turn left" class="dropdown-choice">Turn left()</option>
+            <option value="Turn right" class="dropdown-choice">Turn right()</option>
           </select>
         </div>
-        </div>
+      </div>
       <button id="add-input-button">add</button>
       <div>
   </section>
