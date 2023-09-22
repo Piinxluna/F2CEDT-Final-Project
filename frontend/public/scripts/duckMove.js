@@ -17,8 +17,31 @@ export async function movingElement(el, start, des) {
   }
 }
 
-export async function setUpMap() {
-  /* จัดระเบียบ code ที่ใช้ setup map (ตำแหน่งเริ่มแม่เป็ด+ลูกเป็ด+การหันหน้าของแม่เป็ด ฯลฯ) */
+export async function setUpMap(blockSize, startPos, startDir, babyDuckPos) {
+  //change mom duck direction
+
+  //change mom duck position
+  let duckPic = document.getElementById("mom-duck-pic");
+  duckPic.height = blockSize;
+  duckPic.width = blockSize;
+  await displayPos(
+    duckPic,
+    startPos.map((x) => x * blockSize),
+    blockSize
+  );
+
+  //change baby duck position
+  for (let i = 0; i < babyDuckPos.length; i++) {
+    let babyDuck = document.getElementById("baby-duck-pic-" + i);
+    babyDuck.height = blockSize;
+    babyDuck.width = blockSize;
+    babyDuck.style.display = "block";
+    displayPos(
+      babyDuck,
+      babyDuckPos[i].map((x) => x * blockSize),
+      blockSize
+    );
+  }
 }
 
 export async function displayPos(el, pos) {
@@ -35,13 +58,15 @@ export function isSamePoint(pos1, pos2) {
   }
 }
 
-export function hideBabyDuck(myPos) {
-  for (let i = 0; i < 3; i++) {
+export function hideBabyDuck(myPos, babyDuckPos) {
+  for (let i = 0; i < babyDuckPos.length; i++) {
     let babyDuck = document.getElementById("baby-duck-pic-" + i);
     let pos = [babyDuck.offsetTop, babyDuck.offsetLeft];
     myPos = myPos.map((x) => Math.floor(x));
+    console.log(pos, myPos);
     if (isSamePoint(pos, myPos)) {
       babyDuck.style.display = "none";
+      console.log("hiding");
     }
   }
 }
