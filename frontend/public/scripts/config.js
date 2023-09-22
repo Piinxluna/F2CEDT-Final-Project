@@ -13,4 +13,4 @@
  */
 
 // export const BACKEND_URL = "http://localhost:3222";
-export const BACKEND_URL = "http://18.212.178.222:3222";
+export const BACKEND_URL = 'http://18.212.178.222:3222'
