@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const addInputButton = document.getElementById("add-input-button");
   addInputButton.addEventListener("click", () => {
-    console.log("Hi")
     addInputLine();
   });
 });
