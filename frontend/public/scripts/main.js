@@ -1,5 +1,9 @@
-import { runCode, showNewLevel, addInputLine } from './codeExecution.js'
-import { testDelay } from './duckMove.js'
+import {
+	runCode,
+	showNewLevel,
+	addInputLine,
+	deleteInputLine,
+} from './codeExecution.js'
 
 showNewLevel(0)
 
@@ -12,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	const addInputButton = document.getElementById('add-input-button')
 	addInputButton.addEventListener('click', () => {
 		addInputLine()
+	})
+	const delInputButton = document.getElementById('delete-input-button')
+	delInputButton.addEventListener('click', () => {
+		deleteInputLine()
 	})
 
 	const playAgainButton1 = document.getElementById('play-again-button-win')

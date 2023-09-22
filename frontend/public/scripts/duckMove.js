@@ -66,12 +66,8 @@ export function isSamePoint(pos1, pos2) {
 export function hideBabyDuck(myPos, babyDuckPos) {
 	for (let i = 0; i < babyDuckPos.length; i++) {
 		let babyDuck = document.getElementById('baby-duck-pic-' + i)
-		let pos = [babyDuck.offsetTop, babyDuck.offsetLeft]
-		myPos = myPos.map(x => Math.floor(x))
-		console.log(pos, myPos)
-		if (isSamePoint(pos, myPos)) {
+		if (isSamePoint(babyDuckPos[i], myPos)) {
 			babyDuck.style.display = 'none'
-			console.log('hiding')
 		}
 	}
 }
