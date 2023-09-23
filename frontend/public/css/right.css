@@ -1,4 +1,5 @@
 #mainCode {
+	background-color: var(--secondary);
     z-index: -2;
 }
 
@@ -9,6 +10,9 @@
 	right: 20px;
 	outline: none;
 	cursor: pointer;
+	background: transparent;
+	border: transparent;
+	color:var(--background);
 }
 
 .changeAftShow {
@@ -28,4 +32,13 @@
 	right: 3%;
 	width: 100px;
 	height: 40px;
+	border: 1px solid var(--border);
+	background-color: var(--primary);
+	color: var(--text);
+}
+
+#runCodeButton:hover {
+	color: var(--background);
+	background-color: var(--text);
+	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
 }
