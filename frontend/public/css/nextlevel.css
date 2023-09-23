@@ -4,8 +4,8 @@ body {
 
 #gameOver {
 	position: fixed;
-	/* display: none; */
-	display: block;
+	display: none;
+	/* display: block; */
 	z-index: 3;
 	height: 100%;
 	width: 100%;

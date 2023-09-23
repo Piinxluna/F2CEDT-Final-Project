@@ -1,8 +1,10 @@
 #map-background {
-	height: 80%;
-	width: auto;
-	position: absolute;
+	height: auto;
+	width: 80%;
+	position: relative;
 	z-index: -1;
+	display: block;
+	margin: auto;
 }
 .duck-pic {
 	position: absolute;
