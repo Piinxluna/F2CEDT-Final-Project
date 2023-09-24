@@ -27,11 +27,14 @@
 @media only screen and (min-width: 768px) {
 	/* For desktop: */
 	#mainPart {
+		position: fixed;
 		height: 100%;
 		width: 65%;
 	}
 	
 	#mainCode {
+		position: absolute;
+		min-height: 100%;
 		height: auto;
 		width: 35%;
 		right: 0;
