@@ -6,9 +6,9 @@
 	box-sizing: border-box;
 }
 
-/* body {
-	background-color: var(--background);
-} */
+body {
+	background-color: var(--secondary);
+}
 
 h1 {
 	font-family: 'Kanit', sans-serif;

@@ -2,7 +2,7 @@
 	height: auto;
 	width: 80%;
 	position: relative;
-	z-index: -1;
+	z-index: 0;
 	display: block;
 	margin: auto;
 }

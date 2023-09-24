@@ -1,5 +1,5 @@
 #mainPart {
-	background-color: transparent;
+	background-color: var(--background);
 }
 
 .mainMap {
