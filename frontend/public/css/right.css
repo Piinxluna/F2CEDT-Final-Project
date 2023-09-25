@@ -27,7 +27,7 @@
 	padding: 20px;
 }
 
-#runCodeButton {
+#runCodeButton2 {
 	position: absolute;
 	bottom: 5%;
 	right: 3%;
@@ -36,9 +36,10 @@
 	border: 1px solid var(--border);
 	background-color: var(--primary);
 	color: var(--text);
+	display: block;
 }
 
-#runCodeButton:hover {
+#runCodeButton2:hover {
 	color: var(--background);
 	background-color: var(--text);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
