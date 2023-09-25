@@ -7,6 +7,7 @@
 .dropdown-title {
 	text-align: center;
 	font-size: xx-large;
+	border: none;
 }
 
 .dropdown {
