@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const nextLevelButton = document.getElementById('next-level-button')
 	nextLevelButton.addEventListener('click', () => {
+		console.log('HelloWorld')
 		let levelNum = document.getElementById('levelNum').innerText
 		levelNum = levelNum.slice(6)
 		const finPage = document.getElementById('gameOver')
