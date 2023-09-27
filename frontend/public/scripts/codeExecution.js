@@ -3,8 +3,7 @@ import { displayPos, hideBabyDuck, isSamePoint, setUpMap } from './duckMove.js'
 /** @typedef {import("./config.js").Level} Level */
 
 var duckPic = document.getElementById('mom-duck-pic')
-var blockSize
-var dir = 0 // 1 = Up, 2 = Right, 3 = Down, 4 = Left,
+var dir = 0 // 1 = Up, 2 = Right, 3 = Down, 4 = Left
 var goal = [0, 0]
 var startPos = []
 var babyDuckPos = []
@@ -14,7 +13,23 @@ var codeGuide = {}
 var pos = [0, 0]
 var nextPos = []
 var inputInd = 1
+var forInputInd = []
 var codeLists = []
+
+// Get map size
+const mapBackground = document.getElementById('map-background')
+var mapSize = 0
+var blockSize = 0
+var mapPos = []
+
+let resizeObserver = new ResizeObserver(() => {
+	mapSize = mapBackground.width
+	blockSize = mapSize / mapArray.length
+	mapPos[0] = mapBackground.offsetTop
+	mapPos[1] = mapBackground.offsetLeft
+	console.log(mapSize, blockSize, mapPos)
+})
+resizeObserver.observe(mapBackground)
 
 export function addInputLine() {
 	const codeInput = document.getElementById('code-input')
@@ -103,14 +118,14 @@ export async function calcResult(codeLists) {
 				hideBabyDuck(babyDuckPos[i], babyDuckPos)
 			}
 		}
-		console.log(pos, errorWalk)
 
 		if (isError == true) {
 			errorWalk++
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize
+				blockSize,
+				mapPos
 			)
 		} else {
 			errorWalk = 0
@@ -160,7 +175,8 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize
+				blockSize,
+				mapPos
 			)
 		} else {
 			isError = true
@@ -174,7 +190,8 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize
+				blockSize,
+				mapPos
 			)
 		} else if (getPosData(nextPos) == 'r') {
 			nextTarget(2)
@@ -182,7 +199,8 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize
+				blockSize,
+				mapPos
 			)
 		} else {
 			isError = true
@@ -217,9 +235,6 @@ export async function showNewLevel(levelNumber) {
 	mapArray = newLev.mapArray
 	codeGuide = newLev.codeGuide
 
-	var mapSize = document.getElementById('map-background').clientWidth
-	blockSize = mapSize / newLev.mapArray.length
-
 	startPos = newLev.momDuckStartPos
 	pos = startPos
 
@@ -230,7 +245,13 @@ export async function showNewLevel(levelNumber) {
 		babyDuckPos[i] = newLev.babyDuckPos[i]
 	}
 
-	setUpMap(blockSize, startPos, dir, babyDuckPos)
+	// Setting up size
+	mapSize = mapBackground.width
+	blockSize = mapSize / mapArray.length
+	mapPos[0] = mapBackground.offsetTop
+	mapPos[1] = mapBackground.offsetLeft
+
+	setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos)
 
 	// Call function show code input
 }
