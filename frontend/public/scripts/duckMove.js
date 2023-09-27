@@ -2,11 +2,6 @@ function delay(time) {
 	return new Promise(resolve => setTimeout(resolve, time))
 }
 
-export async function testDelay() {
-	await delay(1000)
-	console.log('Test')
-}
-
 export async function movingElement(el, start, des) {
 	x1 = start[0]
 	y1 = start[1]
@@ -22,17 +17,21 @@ export async function movingElement(el, start, des) {
 	}
 }
 
-export async function setUpMap(blockSize, startPos, startDir, babyDuckPos) {
+export async function setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos) {
+	console.log('set up map is working')
 	//change mom duck direction
 
 	//change mom duck position
 	let duckPic = document.getElementById('mom-duck-pic')
 	duckPic.height = blockSize
 	duckPic.width = blockSize
+	duckPic.style.display = 'block'
+	console.log(startPos, blockSize)
+	console.log(startPos.map(x => x * blockSize))
 	await displayPos(
 		duckPic,
 		startPos.map(x => x * blockSize),
-		blockSize
+		mapPos
 	)
 
 	//change baby duck position
@@ -44,14 +43,42 @@ export async function setUpMap(blockSize, startPos, startDir, babyDuckPos) {
 		displayPos(
 			babyDuck,
 			babyDuckPos[i].map(x => x * blockSize),
-			blockSize
+			mapPos
 		)
 	}
 }
 
-export async function displayPos(el, pos) {
-	el.style.top = pos[0] + 'px'
-	el.style.left = pos[1] + 'px'
+export async function resizeMap(mapPos, blockSize, pos, babyDuckPos) {
+	//change mom duck position
+	let duckPic = document.getElementById('mom-duck-pic')
+	duckPic.height = blockSize
+	duckPic.width = blockSize
+	await displayPos(
+		duckPic,
+		pos.map(x => x * blockSize),
+		mapPos
+	)
+
+	//change baby duck position
+	for (let i = 0; i < babyDuckPos.length; i++) {
+		let babyDuck = document.getElementById('baby-duck-pic-' + i)
+		babyDuck.height = blockSize
+		babyDuck.width = blockSize
+		displayPos(
+			babyDuck,
+			babyDuckPos[i].map(x => x * blockSize),
+			mapPos
+		)
+	}
+}
+
+export async function displayPos(el, pos, mapPos) {
+	console.log(
+		`display ${el.id} is working : ${mapPos[0] + pos[0]} ${mapPos[1] + pos[1]}`
+	)
+	console.log(mapPos, pos)
+	el.style.top = mapPos[0] + pos[0] + 'px'
+	el.style.left = mapPos[1] + pos[1] + 'px'
 	await delay(750)
 }
 
