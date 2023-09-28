@@ -17,43 +17,43 @@ export async function movingElement(el, start, des) {
 	}
 }
 
-export async function setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos) {
-	console.log('set up map is working')
+export function setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos) {
+	let duckPic = document.getElementById('mom-duck-pic')
 	//change mom duck direction
+	changeDirection(dir)
 
 	//change mom duck position
-	let duckPic = document.getElementById('mom-duck-pic')
 	duckPic.height = blockSize
 	duckPic.width = blockSize
-	duckPic.style.display = 'block'
 	console.log(startPos, blockSize)
 	console.log(startPos.map(x => x * blockSize))
-	await displayPos(
+	displayPos(
 		duckPic,
 		startPos.map(x => x * blockSize),
 		mapPos
 	)
+	duckPic.style.display = 'block'
 
 	//change baby duck position
 	for (let i = 0; i < babyDuckPos.length; i++) {
 		let babyDuck = document.getElementById('baby-duck-pic-' + i)
 		babyDuck.height = blockSize
 		babyDuck.width = blockSize
-		babyDuck.style.display = 'block'
 		displayPos(
 			babyDuck,
 			babyDuckPos[i].map(x => x * blockSize),
 			mapPos
 		)
+		babyDuck.style.display = 'block'
 	}
 }
 
-export async function resizeMap(mapPos, blockSize, pos, babyDuckPos) {
+export function resizeMap(mapPos, blockSize, pos, babyDuckPos) {
 	//change mom duck position
 	let duckPic = document.getElementById('mom-duck-pic')
 	duckPic.height = blockSize
 	duckPic.width = blockSize
-	await displayPos(
+	displayPos(
 		duckPic,
 		pos.map(x => x * blockSize),
 		mapPos
@@ -73,10 +73,6 @@ export async function resizeMap(mapPos, blockSize, pos, babyDuckPos) {
 }
 
 export async function displayPos(el, pos, mapPos) {
-	console.log(
-		`display ${el.id} is working : ${mapPos[0] + pos[0]} ${mapPos[1] + pos[1]}`
-	)
-	console.log(mapPos, pos)
 	el.style.top = mapPos[0] + pos[0] + 'px'
 	el.style.left = mapPos[1] + pos[1] + 'px'
 	await delay(750)
@@ -88,6 +84,22 @@ export function isSamePoint(pos1, pos2) {
 	} else {
 		return false
 	}
+}
+
+export async function changeDirection(dir) {
+	let duckPic = document.getElementById('mom-duck-pic')
+	let newPic
+	if (dir == 1) {
+		newPic = './src/momDuck_up.GIF'
+	} else if (dir == 2) {
+		newPic = './src/momDuck_right.GIF'
+	} else if (dir == 3) {
+		newPic = './src/momDuck_down.GIF'
+	} else if (dir == 4) {
+		newPic = './src/momDuck_left.GIF'
+	}
+	duckPic.src = newPic
+	await delay(750)
 }
 
 export function hideBabyDuck(myPos, babyDuckPos) {

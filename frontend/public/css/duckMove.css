@@ -8,8 +8,14 @@
 	display: block;
 	margin: auto;
 }
+
 .duck-pic {
 	position: absolute;
 	left: 0px;
 	top: 0px;
+	display: none;
+}
+
+#mom-duck-pic {
+	z-index: 1;
 }

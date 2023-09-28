@@ -1,5 +1,12 @@
 import { callGetNewLevelAPI } from './api.js'
-import { displayPos, hideBabyDuck, isSamePoint, setUpMap } from './duckMove.js'
+import {
+	changeDirection,
+	displayPos,
+	hideBabyDuck,
+	isSamePoint,
+	setUpMap,
+	resizeMap,
+} from './duckMove.js'
 /** @typedef {import("./config.js").Level} Level */
 
 var duckPic = document.getElementById('mom-duck-pic')
@@ -27,7 +34,7 @@ let resizeObserver = new ResizeObserver(() => {
 	blockSize = mapSize / mapArray.length
 	mapPos[0] = mapBackground.offsetTop
 	mapPos[1] = mapBackground.offsetLeft
-	console.log(mapSize, blockSize, mapPos)
+	resizeMap(mapPos, blockSize, pos, babyDuckPos)
 })
 resizeObserver.observe(mapBackground)
 
@@ -62,7 +69,7 @@ export function deleteInputLine() {
 }
 
 export async function runCode() {
-	setUpMap(blockSize, startPos, dir, babyDuckPos)
+	setUpMap(mapPos, blockSize, pos, dir, babyDuckPos)
 
 	// get arrays from codeInput field
 	for (let i = 1; i <= inputInd; i++) {
@@ -100,15 +107,17 @@ export async function calcResult(codeLists) {
 	for (let data of codeLists) {
 		isError = false
 		if (data == 'walk') {
+			console.log('walk')
 			await walk()
 		} else if (data == 'jump') {
+			console.log('jump')
 			await jump()
 		} else if (data == 'turn left') {
-			turn(-1)
-			// await turn(-1)
+			console.log('turn left')
+			await turn(-1)
 		} else if (data == 'turn right') {
-			turn(1)
-			// await turn(1)
+			console.log('turn right')
+			await turn(1)
 		} else if (data.slice(0, 3) == 'for') {
 		}
 
@@ -124,7 +133,6 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize,
 				mapPos
 			)
 		} else {
@@ -175,7 +183,6 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize,
 				mapPos
 			)
 		} else {
@@ -190,7 +197,6 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize,
 				mapPos
 			)
 		} else if (getPosData(nextPos) == 'r') {
@@ -199,7 +205,6 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize,
 				mapPos
 			)
 		} else {
@@ -207,13 +212,15 @@ export async function calcResult(codeLists) {
 		}
 	}
 
-	function turn(newDir) {
+	async function turn(newDir) {
+		// 1 = Up, 2 = Right, 3 = Down, 4 = Left
 		dir += newDir
 		if (dir == 0) {
 			dir = 4
 		} else if (dir == 5) {
 			dir = 1
 		}
+		await changeDirection(dir)
 	}
 }
 
