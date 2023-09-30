@@ -16,6 +16,7 @@ var startPos = []
 var babyDuckPos = []
 var mapArray = []
 var codeGuide = {}
+let exportedCodeGuide
 
 var pos = [0, 0]
 var nextPos = []
@@ -48,7 +49,7 @@ export function addInputLine() {
 		const newdropdown = document.createElement('div')
 		let optionHTML = `<h6 class="space"></h6>`
 		optionHTML += `<label for="movement-${inputInd}" class="order-dropdown"> ${inputInd} : </label>`
-		optionHTML += `<select id="movement-${inputInd}" class="dropdown-select" onchange="checkFor(this)">
+		optionHTML += `<select id="movement-${inputInd}" class="dropdown-select" onchange="checkFor(this,${exportedCodeGuide})">
     <option disabled>-Choose Option-</option>`
 		for (let option of codeGuide.choice) {
 			optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
@@ -74,7 +75,19 @@ export async function runCode() {
 	// get arrays from codeInput field
 	for (let i = 1; i <= inputInd; i++) {
 		let input = document.getElementById(`movement-${i}`)
-		codeLists.push(input.value)
+		if (typeof value != 'object') {
+			codeLists.push(input.value)
+		} else if (data.name == 'for') {
+			/* for structure! 
+			{
+				name : "for",
+				initial : (let i = initial),
+				condition : == < > <= >=,
+				conditionValue : (;i = VALUE;),
+				step : 1 or -1 (i++ / i--)
+			}
+			*/
+		}
 	}
 	console.log(codeLists)
 
@@ -107,10 +120,8 @@ export async function calcResult(codeLists) {
 	for (let data of codeLists) {
 		isError = false
 		if (data == 'walk') {
-			console.log('walk')
 			await walk()
 		} else if (data == 'jump') {
-			console.log('jump')
 			await jump()
 		} else if (data == 'turn left') {
 			console.log('turn left')
@@ -127,6 +138,7 @@ export async function calcResult(codeLists) {
 				hideBabyDuck(babyDuckPos[i], babyDuckPos)
 			}
 		}
+		console.log(pos, errorWalk)
 
 		if (isError == true) {
 			errorWalk++
@@ -241,6 +253,11 @@ export async function showNewLevel(levelNumber) {
 	//change map array
 	mapArray = newLev.mapArray
 	codeGuide = newLev.codeGuide
+	exportedCodeGuide = `{ choice: ['${codeGuide.choice[0]}'`
+	for (let i = 1; i < codeGuide.choice.length; i++) {
+		exportedCodeGuide += `, '${codeGuide.choice[i]}'`
+	}
+	exportedCodeGuide += `], forLimit: 5 }`
 
 	startPos = newLev.momDuckStartPos
 	pos = startPos

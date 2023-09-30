@@ -46,29 +46,36 @@ window.onload = function () {
 	closeCenterModal2()
 }
 
-function checkFor(object) {
+function checkFor(object, codeGuide) {
+	let exportedCodeGuide = `{ choice: ['${codeGuide.choice[0]}'`
+	for (let i = 1; i < codeGuide.choice.length; i++) {
+		exportedCodeGuide += `, '${codeGuide.choice[i]}'`
+	}
+	exportedCodeGuide += `], forLimit: 5 }`
+	let forId = object.id.slice(9)
+
 	if (object.value == 'for') {
 		let codeFor = document.getElementById(
-			object.id.slice(0, 9) + 'div-' + object.id.slice(9)
+			object.id.slice(0, 9) + 'div-' + forId
 		)
-		let infor = document.createElement('div')
-		infor.innerHTML = `
-          <label class="for-inform">int i = </label>
-          <input type="text" class="for-i"></input>
-          <label class="for-inform">; i </label>
-          <input type="text" class="for-i"></input>
-          <label class="for-inform">; i </label>
+		let forDetail = document.createElement('div')
+		forDetail.innerHTML = `<div>
+      <label class="for-informm">int i = </label>
+      <input type="text" class="for-i"></input>
+      <label class="for-informm">; i </label>
+      <input type="text" class="for-i"></input>
+      <label class="for-informm">; i </label>
 		  <select class="dropdown-select">
 		  <option value="++" class="dropdown-choice"> ++ </option>
 		  <option value="--" class="dropdown-choice"> -- </option>
-		  </select>`
-		codeFor.appendChild(infor)
-		let inForCode = document.createElement('div')
-		inForCode.innerHTML = `<p> { </p>
-		<div id="for-code-input-${object.id.slice(9)}">
-		<div id="for-1-movement-div-1">
-      	<label for="for-1-movement-1" class="order-dropdown"> 1 : </label>
-      	<select id="for-1-movement-1" class="dropdown-select">
+		  </select>
+		</div>`
+		forDetail.innerHTML += `<div>
+		<p> { </p>
+		<div id="for-code-input-${forId}">
+		<div id="for-${forId}-movement-div-1">
+      	<label for="for-${forId}-movement-1" class="order-dropdown"> 1 : </label>
+      	<select id="for-${forId}-movement-1" class="dropdown-select">
         	<option disabled>-Choose Option-</option>
         	<option value="walk" class="dropdown-choice">walk()</option>
         	<option value="jump" class="dropdown-choice">jump()</option>
@@ -77,37 +84,35 @@ function checkFor(object) {
       	</select>
     	</div>
 		</div>
-		<button id="add-for-input-button-${object.id.slice(
-			9
-		)}" class="fillButton add-del-button" onclick="addForInput(this)">add</button>
-      	<button id="delete-for-input-button-${object.id.slice(
-					9
-				)}" class="fillButton add-del-button">delete</button>
-		<p> } </p>`
-		codeFor.appendChild(inForCode)
+		<button id="add-for-input-button-${forId}" class="fillButton add-del-button" onclick="addForInput(this,${exportedCodeGuide})">add</button>
+    <button id="delete-for-input-button-${forId}" class="fillButton add-del-button">delete</button>
+		<p> } </p>
+		</div>`
+		forDetail.setAttribute('id', `for-detail-div-${forId}`)
+		codeFor.appendChild(forDetail)
+	} else if (document.getElementById(`for-detail-div-${forId}`) !== null) {
+		console.log('yeah!')
+		document.getElementById(`for-detail-div-${forId}`).remove()
 	}
 }
 
-function addForInput(object) {
-	const codeInput = document.getElementById(
-		`for-code-input-${object.id.slice(21)}`
-	)
-	const codeGuide = require('./getCodeGuide')
-	if (codeInput.children.length > 5) {
-		alert('เพิ่มโค้ดเต็มจำนวนแล้ว!')
+function addForInput(object, codeGuide) {
+	let forId = object.id.slice(21)
+	const codeInput = document.getElementById(`for-code-input-${forId}`)
+	if (codeInput.children.length > codeGuide.forLimit - 1) {
+		alert('เพิ่มโค้ดของ for เต็มจำนวนแล้ว!')
 	} else {
-		let inputInd = codeInput.children.length
+		let inputInd = codeInput.children.length + 1
 		const newdropdown = document.createElement('div')
-		let optionHTML = `<h6 class="space"></h6>`
-		optionHTML += `<label for="movement-${inputInd}" class="order-dropdown"> ${inputInd} : </label>`
-		optionHTML += `<select id="movement-${inputInd}" class="dropdown-select">
-    <option disabled>-Choose Option-</option>`
+		let optionHTML = `<label for="for-${forId}-movement-${inputInd}" class="order-dropdown"> ${inputInd} : </label>`
+		optionHTML += `<select id="for-${forId}-movement-${inputInd}" class="dropdown-select">
+	  <option disabled>-Choose Option-</option>`
 		for (let option of codeGuide.choice) {
 			optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
 		}
 		optionHTML += `</select>`
 		newdropdown.innerHTML = optionHTML
-		newdropdown.setAttribute('id', `movement-div-${inputInd}`)
+		newdropdown.setAttribute('id', `for-${forId}-movement-div-${inputInd}`)
 		codeInput.appendChild(newdropdown)
 	}
 }
