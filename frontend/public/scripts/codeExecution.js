@@ -19,7 +19,7 @@ var codeGuide = {}
 
 var pos = [0, 0]
 var nextPos = []
-var inputInd = 1
+var inputInd = 0
 var forInputInd = []
 var codeLists = []
 
@@ -48,7 +48,7 @@ export function addInputLine() {
 		const newdropdown = document.createElement('div')
 		let optionHTML = `<h6 class="space"></h6>`
 		optionHTML += `<label for="movement-${inputInd}" class="order-dropdown"> ${inputInd} : </label>`
-		optionHTML += `<select id="movement-${inputInd}" class="dropdown-select">
+		optionHTML += `<select id="movement-${inputInd}" class="dropdown-select" onchange="checkFor(this)">
     <option disabled>-Choose Option-</option>`
 		for (let option of codeGuide.choice) {
 			optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
@@ -260,7 +260,7 @@ export async function showNewLevel(levelNumber) {
 
 	setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos)
 
-	// Call function show code input
+	addInputLine() // Call function show code input
 }
 
 export async function showStar(type, levelScore) {

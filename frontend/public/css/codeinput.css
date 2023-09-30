@@ -59,14 +59,7 @@
 	display: flex;
 }
 
-/* #add-input-button {
-	margin: 1% 45% 10%;
-	color: #000;
-	background-color: #fff;
-	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-} */
-
-#add-input-button {
+.add-del-button {
 	position: relative;
 	text-align: center;
 	display: block;
@@ -79,26 +72,7 @@
 	color: var(--text);
 }
 
-#add-input-button:hover {
-	color: var(--background);
-	background-color: var(--text);
-	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-}
-
-#delete-input-button {
-	position: relative;
-	text-align: center;
-	display: block;
-	margin: 3%;
-	padding: 1%;
-	width: auto;
-	height: 25px;
-	border: 1px solid var(--border);
-	background-color: var(--background);
-	color: var(--text);
-}
-
-#delete-input-button:hover {
+.add-del-button:hover {
 	color: var(--background);
 	background-color: var(--text);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
@@ -115,4 +89,19 @@
 
 .order-dropdown {
 	min-width: 100px;
+}
+
+#code-for-input {
+	position: relative;
+}
+
+.for-i {
+	max-width: 10%;
+}
+
+#code-for-input {
+	margin: 5% -20%;
+}
+#movement-div-1 {
+	margin: 2% 12%;
 }
