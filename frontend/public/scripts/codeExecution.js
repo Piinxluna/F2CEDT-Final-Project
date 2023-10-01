@@ -1,5 +1,12 @@
 import { callGetNewLevelAPI } from './api.js'
-import { displayPos, hideBabyDuck, isSamePoint, setUpMap } from './duckMove.js'
+import {
+	changeDirection,
+	displayPos,
+	hideBabyDuck,
+	isSamePoint,
+	setUpMap,
+	resizeMap,
+} from './duckMove.js'
 /** @typedef {import("./config.js").Level} Level */
 
 var duckPic = document.getElementById('mom-duck-pic')
@@ -9,10 +16,11 @@ var startPos = []
 var babyDuckPos = []
 var mapArray = []
 var codeGuide = {}
+let exportedCodeGuide
 
 var pos = [0, 0]
 var nextPos = []
-var inputInd = 1
+var inputInd = 0
 var forInputInd = []
 var codeLists = []
 
@@ -27,7 +35,7 @@ let resizeObserver = new ResizeObserver(() => {
 	blockSize = mapSize / mapArray.length
 	mapPos[0] = mapBackground.offsetTop
 	mapPos[1] = mapBackground.offsetLeft
-	console.log(mapSize, blockSize, mapPos)
+	resizeMap(mapPos, blockSize, pos, babyDuckPos)
 })
 resizeObserver.observe(mapBackground)
 
@@ -41,7 +49,7 @@ export function addInputLine() {
 		const newdropdown = document.createElement('div')
 		let optionHTML = `<h6 class="space"></h6>`
 		optionHTML += `<label for="movement-${inputInd}" class="order-dropdown"> ${inputInd} : </label>`
-		optionHTML += `<select id="movement-${inputInd}" class="dropdown-select">
+		optionHTML += `<select id="movement-${inputInd}" class="dropdown-select" onchange="checkFor(this,${exportedCodeGuide})">
     <option disabled>-Choose Option-</option>`
 		for (let option of codeGuide.choice) {
 			optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
@@ -62,12 +70,24 @@ export function deleteInputLine() {
 }
 
 export async function runCode() {
-	setUpMap(blockSize, startPos, dir, babyDuckPos)
+	setUpMap(mapPos, blockSize, pos, dir, babyDuckPos)
 
 	// get arrays from codeInput field
 	for (let i = 1; i <= inputInd; i++) {
 		let input = document.getElementById(`movement-${i}`)
-		codeLists.push(input.value)
+		if (typeof value != 'object') {
+			codeLists.push(input.value)
+		} else if (data.name == 'for') {
+			/* for structure! 
+			{
+				name : "for",
+				initial : (let i = initial),
+				condition : == < > <= >=,
+				conditionValue : (;i = VALUE;),
+				step : 1 or -1 (i++ / i--)
+			}
+			*/
+		}
 	}
 	console.log(codeLists)
 
@@ -104,11 +124,11 @@ export async function calcResult(codeLists) {
 		} else if (data == 'jump') {
 			await jump()
 		} else if (data == 'turn left') {
-			turn(-1)
-			// await turn(-1)
+			console.log('turn left')
+			await turn(-1)
 		} else if (data == 'turn right') {
-			turn(1)
-			// await turn(1)
+			console.log('turn right')
+			await turn(1)
 		} else if (data.slice(0, 3) == 'for') {
 		}
 
@@ -118,13 +138,13 @@ export async function calcResult(codeLists) {
 				hideBabyDuck(babyDuckPos[i], babyDuckPos)
 			}
 		}
+		console.log(pos, errorWalk)
 
 		if (isError == true) {
 			errorWalk++
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize,
 				mapPos
 			)
 		} else {
@@ -175,7 +195,6 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize,
 				mapPos
 			)
 		} else {
@@ -190,7 +209,6 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize,
 				mapPos
 			)
 		} else if (getPosData(nextPos) == 'r') {
@@ -199,7 +217,6 @@ export async function calcResult(codeLists) {
 			await displayPos(
 				duckPic,
 				pos.map(x => x * blockSize),
-				blockSize,
 				mapPos
 			)
 		} else {
@@ -207,13 +224,15 @@ export async function calcResult(codeLists) {
 		}
 	}
 
-	function turn(newDir) {
+	async function turn(newDir) {
+		// 1 = Up, 2 = Right, 3 = Down, 4 = Left
 		dir += newDir
 		if (dir == 0) {
 			dir = 4
 		} else if (dir == 5) {
 			dir = 1
 		}
+		await changeDirection(dir)
 	}
 }
 
@@ -234,6 +253,11 @@ export async function showNewLevel(levelNumber) {
 	//change map array
 	mapArray = newLev.mapArray
 	codeGuide = newLev.codeGuide
+	exportedCodeGuide = `{ choice: ['${codeGuide.choice[0]}'`
+	for (let i = 1; i < codeGuide.choice.length; i++) {
+		exportedCodeGuide += `, '${codeGuide.choice[i]}'`
+	}
+	exportedCodeGuide += `], forLimit: 5 }`
 
 	startPos = newLev.momDuckStartPos
 	pos = startPos
@@ -253,7 +277,7 @@ export async function showNewLevel(levelNumber) {
 
 	setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos)
 
-	// Call function show code input
+	addInputLine() // Call function show code input
 }
 
 export async function showStar(type, levelScore) {
