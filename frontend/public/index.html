@@ -1,129 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>เกมจ้า</title>
-    <script src="./scripts/script.js"></script>
-    <script type="module" src="./scripts/main.js"></script>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link type="text/css" rel="stylesheet" href="codeinput.css" />
-    <link type="text/css" rel="stylesheet" href="nextlevel.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <section id="gameOver">
-      <div id="win">
-        <h1 class="wordLevel">
-          Level Complete!
-        </h1>
-        <img 
-          class="completeImg"
-          src="./src/DuckComplete.gif"
-          />
-        <button class="endGameBut">play again</button>
-        <button class="endGameBut">next level</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เกมจ้า</title>
+  <script type="module" src="./scripts/main.js"></script>
+  <script src="./scripts/script.js"></script>
+  <link type="text/css" rel="stylesheet" href="./css/style.css">
+  <link type="text/css" rel="stylesheet" href="./css/responsive.css">
+  <link type="text/css" rel="stylesheet" href="./css/codeinput.css" />
+  <link type="text/css" rel="stylesheet" href="./css/duckMove.css">
+  <link type="text/css" rel="stylesheet" href="./css/nextlevel.css">
+  <link type="text/css" rel="stylesheet" href="./css/left.css">
+  <link type="text/css" rel="stylesheet" href="./css/right.css">
+  <link type="text/css" rel="stylesheet" href="./css/color.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <section id="gameOver">
+    <div id="win">
+      <h1 class="wordLevel">
+        Level Complete!
+      </h1>
+      <img class="completeImg" src="./src/momDuck_down.gif" />
+      <div id="win-star">
+        <img id="result-star1" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
+        <img id="result-star2" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
+        <img id="result-star3" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
       </div>
-      <div id="lose">
-        <h1 class="wordLevel">
-          Game Over
-        </h1>
-        <img 
-          class="completeImg"
-          src="./src/DuckComplete.gif"
-          />
-        <button class="endGameBut">play again</button>
-      </div>
-    </section>
-    <section id="mainPart">
-      <!-- map -->
-      <div class="mainMap">
-        <img src="./src/Map.png" class="centerimg" alt="map pic" />
-      </div>
-      <div class="underMap">
-        <!-- level bar -->
-        <div class="levelScore">
-          <img
-            id="star1"
-            class="star"
-            src="./src/vecteezy_star.jpg"
-            width="6%"
-            height="auto"
-            alt="star"
-          />
-          <img
-            id="star2"
-            class="star"
-            src="./src/vecteezy_star.jpg"
-            width="6%"
-            height="auto"
-            alt="star"
-          />
-          <img
-            id="star3"
-            class="star"
-            src="./src/vecteezy_star.jpg"
-            width="6%"
-            height="auto"
-            alt="star"
-          />
-          <h1 id="levelNum">Level 0</h1>
-        </div>
-        
-        <div class="help1">
-          <button class="fillButton" onclick="openCenterModal1()">
-            <h3>hint</h3>
-          </button>
-          <div id="centerModal1" class="center-modal">
-            <div class="center-modal-content">
-              <span class="close" onclick="closeCenterModal1()">close</span>
-              <p id="hintContent">Hint จ้าาาา Hint</p>
-            </div>
-          </div>
-        </div>
-        <div class="help2">
-          <button class="fillButton" onclick="openCenterModal2()">
-            <h3>?</h3>
-          </button>
-          <div id="centerModal2" class="center-modal">
-            <div class="center-modal-content">
-              <span class="close" onclick="closeCenterModal2()">close</span>
-              <p id="helpContent">เล่นไงง้าบ</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      </section>
-      
-      <div class="changeAftShow">
-        <h3>
-        <button id="hideButton" onclick="hidecode()">hide</button>
-        <button id="runCodeButton" class="borderButton">run code</button>
-      </h3>
+      <button class="endGameBut fillButton" id="play-again-button-win">play again</button>
+      <button class="endGameBut fillButton" id="next-level-button">next level</button>
     </div>
-    <section id="mainCode">
-      <div id="mainAns">
-        <h2 class="dropdown-title">Code here</h2>
-        <div id="code-input">
-        <div>
-          <label for="movement" class="order-dropdown"> 1 : </label>
-          <select id="movement-choice" class="dropdown-select">
-          <option disabled>--Choose Option--</option>
-          <option value="Walk" class="dropdown-choice">Walk()</option>
-          <option value="Jump" class="dropdown-choice">Jump()</option>
-          <option value="Turn left" class="dropdown-choice">Turn left()</option>
-          <option value="Turn right" class="dropdown-choice">Turn right()</option>
-          </select>
+    <div id="lose">
+      <h1 class="wordLevel">
+        Game Over
+      </h1>
+      <img class="completeImg" src="./src/momDuck_down.gif" />
+      <h3 id="error-message"></h3>
+      <button class="endGameBut fillButton" id="play-again-button-lose">play again</button>
+    </div>
+  </section>
+
+  <section id="mainPart">
+    <!-- map -->
+    <div class="mainMap">
+      <img src="./src/map_level1.png" id="map-background" alt="map pic" />
+      <img src="./src/momDuck_up.gif" id="mom-duck-pic" alt="mom duck pic" class="duck-pic" />
+      <img src="./src/babyDuck.gif" id="baby-duck-pic-0" alt="mom duck pic" class="duck-pic" />
+      <img src="./src/babyDuck.gif" id="baby-duck-pic-1" alt="mom duck pic" class="duck-pic" />
+      <img src="./src/babyDuck.gif" id="baby-duck-pic-2" alt="mom duck pic" class="duck-pic" />
+    </div>
+    <div class="underMap">
+      <!-- level bar -->
+      <div class="levelScore">
+        <img id="level-star1" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
+        <img id="level-star2" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
+        <img id="level-star3" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
+        <h1 id="levelNum">Level 0</h1>
+      </div>
+
+      <div class="help1">
+        <button id="hintButton" class="fillButton" onclick="openCenterModal1()">
+          <h3>hint</h3>
+        </button>
+        <div id="centerModal1" class="center-modal">
+          <div class="center-modal-content">
+            <span class="close" onclick="closeCenterModal1()">close</span>
+            <p id="hintContent">Hint จ้าาาา ฮิ้นนนนน</p>
+          </div>
         </div>
+      </div>
+      <div class="help2">
+        <button id="helpButton" class="fillButton" onclick="openCenterModal2()">
+          <h3>?</h3>
+        </button>
+        <div id="centerModal2" class="center-modal">
+          <div class="center-modal-content">
+            <span class="close" onclick="closeCenterModal2()">close</span>
+            <p id="helpContent">
+              โอ๊ะ! แม่เป็ดละสายตาจากลูกเพียงเสี้ยววินาที ลูกเป็ดก็หายไปไหนไม่รู้แล้ว
+              และนั่นเป็นหน้าที่ของ "คุณ" ที่จะช่วยแม่เป็ดตามหาลูกตามเส้นทางที่ถูกต้อง
+              <br> เนื่องจากป่านี้ซับซ้อนและอันตรายอย่างมาก เดินผิดก้าวเดียวอาจจะหายไปตลอดกาลเลยก็ได้!!
+              ดังนั้นคุณจะต้องช่วยแม่เป็ดตามหาลูกๆ และพากลับบ้านอย่างปลอดภัย!
+              โดยการสังเกตและคิดว่าจะให้แม่เป็ดเดินไปทางไหน แล้วเลือกโค้ดในช่องตามที่คิดไว้ได้เลย
+              <br>
+              <br>
+              เป้าหมายของเกม : ใช้คำสั่งเพื่อควบคุมแม่เป็ด ให้เดินไปหาลูกเป็ดให้ครบทุกตัว
+              จากนั้นให้เดินไปที่บ้านให้เร็วที่สุด!
+            </p>
+          </div>
         </div>
-        <button id="add-input-button">add</button>
-        <div>
-    </section>
-  </body>
+      </div>
+    </div>
+    <h3>
+      <button id="runCodeButton" class="fillButton">run code</button>
+    </h3>
+  </section>
+
+  <div class="changeAftShow">
+    <h3>
+      <button id="hideButton" onclick="hidecode()">hide</button>
+    </h3>
+  </div>
+
+  <section id="mainCode">
+    <h3>
+      <button id="runCodeButton2" class="fillButton">run code</button>
+    </h3>
+    <h2 class="dropdown-title">Code here</h2>
+    <div id="mainAns">
+      <div id="code-input">
+      </div>
+      <button id="add-input-button" class="fillButton add-del-button">add</button>
+      <button id="delete-input-button" class="fillButton add-del-button">delete</button>
+      <div>
+  </section>
+</body>
+
 </html>

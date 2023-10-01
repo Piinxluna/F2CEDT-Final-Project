@@ -1,0 +1,9 @@
+:root {
+	--text: rgb(14, 18, 32);
+	--background: rgb(251, 252, 253);
+	--primary: rgb(255, 229, 159);
+	--secondary: rgb(183, 225, 218);
+	--accent: rgb(255, 195, 194);
+	--border: #211217;
+	--ligth-border: #ccc;
+}

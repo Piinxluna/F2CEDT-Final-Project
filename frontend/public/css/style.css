@@ -1,0 +1,60 @@
+* {
+	font-family: 'Kanit', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	background-color: var(--secondary);
+}
+
+h1 {
+	font-family: 'Kanit', sans-serif;
+	font-weight: 400;
+	font-size: 56px;
+	margin: 0;
+}
+
+h2 {
+	font-weight: 450;
+	font-size: 24px;
+	margin: 0;
+}
+
+h3 {
+	font-family: 'Kanit', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.fillButton {
+	position: absolute;
+	border-radius: 12px;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	outline: none;
+	padding: 0px;
+	line-height: 0px;
+	text-align: center;
+	text-decoration: none;
+	transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+	touch-action: manipulation;
+	appearance: none;
+}
+
+.fillButton:disabled {
+	pointer-events: none;
+}
+
+.fillButton:hover {
+	transform: translateY(-2px);
+}
+
+.fillButton:active {
+	box-shadow: none;
+	transform: translateY(0);
+}

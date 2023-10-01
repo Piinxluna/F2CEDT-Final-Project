@@ -1,0 +1,107 @@
+.mainAns {
+	font-size: medium;
+}
+.mainAns.movement-title {
+	padding: 10px;
+}
+.dropdown-title {
+	text-align: center;
+	font-size: xx-large;
+	border: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-select {
+	padding: 5px;
+	background-color: var(--background);
+	border: 1px solid var(--ligth-border);
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.dropdown-choice {
+	text-align: center;
+	position: absolute;
+	background-color: var(--background);
+	border: 1px solid var(--ligth-border);
+	border-radius: 4px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-option {
+	display: none;
+	position: absolute;
+	background-color: var(--background);
+	border: 1px solid var(--ligth-border);
+	border-radius: 4px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.dropdown-choice {
+	padding: 10px;
+	cursor: pointer;
+}
+
+.show-options {
+	display: block;
+}
+
+.mainAns {
+	padding: 20px;
+	display: flex;
+}
+
+.add-del-button {
+	position: relative;
+	text-align: center;
+	display: block;
+	margin: 3%;
+	padding: 1%;
+	width: auto;
+	height: 25px;
+	border: 1px solid var(--border);
+	background-color: var(--background);
+	color: var(--text);
+}
+
+.add-del-button:hover {
+	color: var(--background);
+	background-color: var(--text);
+	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+#code-input {
+	background-color: var(--secondary);
+	margin: 2% 31%;
+}
+
+.space {
+	font-size: smaller;
+}
+
+.order-dropdown {
+	min-width: 100px;
+}
+
+#code-for-input {
+	position: relative;
+}
+
+.for-i {
+	max-width: 10%;
+}
+
+#code-for-input {
+	margin: 5% -20%;
+}
+#movement-div-1 {
+	margin: 2% 12%;
+}

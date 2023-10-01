@@ -1,0 +1,21 @@
+#map-background {
+	height: auto;
+	width: auto;
+	max-height: 90%;
+	max-width: 90%;
+	position: relative;
+	z-index: 0;
+	display: block;
+	margin: auto;
+}
+
+.duck-pic {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: none;
+}
+
+#mom-duck-pic {
+	z-index: 1;
+}
