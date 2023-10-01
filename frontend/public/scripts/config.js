@@ -12,5 +12,15 @@
  * @property {string} hint
  */
 
+/**
+ * @typedef {Object} Leaderboard
+ * @property {string} _id
+ * @property {string} name
+ * @property {number} star
+ * @property {number} inputNum
+ * @property {string} createdAt
+ * @property {string} updatedAt
+ */
+
 // export const BACKEND_URL = "http://localhost:3222";
 export const BACKEND_URL = 'http://18.212.178.222:3222'

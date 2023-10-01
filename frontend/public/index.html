@@ -7,6 +7,8 @@
   <title>เกมจ้า</title>
   <script type="module" src="./scripts/main.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/leaderboard.js"></script>
+  <script src="./scripts/leaderboardTable.js"></script>
   <link type="text/css" rel="stylesheet" href="./css/style.css">
   <link type="text/css" rel="stylesheet" href="./css/responsive.css">
   <link type="text/css" rel="stylesheet" href="./css/codeinput.css" />
@@ -15,6 +17,7 @@
   <link type="text/css" rel="stylesheet" href="./css/left.css">
   <link type="text/css" rel="stylesheet" href="./css/right.css">
   <link type="text/css" rel="stylesheet" href="./css/color.css">
+  <link type="text/css" rel="stylesheet" href="./css/leaderboard.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -34,8 +37,18 @@
         <img id="result-star2" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
         <img id="result-star3" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
       </div>
-      <button class="endGameBut fillButton" id="play-again-button-win">play again</button>
-      <button class="endGameBut fillButton" id="next-level-button">next level</button>
+      <div id="playerContent">
+        <div class="container">
+            <p>กรุณาใส่ชื่อแล้วกด submit เพื่อบันทึกคะแนนลง Leaderboard</p>
+            <label for="name">คุณชื่ออาราย:</label>
+            <input type="text" id="name" name="name">
+            <button id="submitButton">submit</button>
+        </div>
+      </div>
+      <div class = "endGameButDiv">
+        <button class="endGameBut fillButton" id="play-again-button-win">play again</button>
+        <button class="endGameBut fillButton" id="next-level-button">next level</button>
+      </div>
     </div>
     <div id="lose">
       <h1 class="wordLevel">
@@ -97,6 +110,28 @@
           </div>
         </div>
       </div>
+      
+      <div class="help4">
+        <button id="checkleader" class="fillButton2" >
+          <h3>Leaderboard</h3>
+        </button>
+        <div id="centerModal4" class="leader-modal">
+          <div class="leader-modal-content">
+            <span class="close" onclick="closeCenterModal4()">close</span>
+            <div id="leaderboardContent">
+              <h1>Leaderboard</h1>
+              <table id="leaderboardTable">
+                <tr>
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Score</th>
+                  <th>Number of input</th>
+                </tr>
+            </div>
+          </div>
+        </div>
+      </div>
+  
     </div>
     <h3>
       <button id="runCodeButton" class="fillButton">run code</button>
@@ -117,9 +152,11 @@
     <div id="mainAns">
       <div id="code-input">
       </div>
-      <button id="add-input-button" class="fillButton add-del-button">add</button>
-      <button id="delete-input-button" class="fillButton add-del-button">delete</button>
       <div>
+        <button id="add-input-button" class="fillButton add-del-button">add</button>
+        <button id="delete-input-button" class="fillButton add-del-button">delete</button>
+      </div>
+    </div>
   </section>
 </body>
 
