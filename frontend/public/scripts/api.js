@@ -31,9 +31,9 @@ export async function callGetNewLevelAPI(levelNumber) {
 		],
 		goalPos: [4, 0],
 		codeGuide: {
-			choice: ['walk', 'jump', 'turn left', 'turn right'],
+			choice: ['walk', 'jump', 'turn left', 'turn right', 'for'],
 			codeLimit: 20,
-			forLimit: 0,
+			forLimit: 5,
 		},
 		hint: 'Test',
 		momDuckStartDir: 1,
