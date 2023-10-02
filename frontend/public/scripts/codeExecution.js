@@ -90,7 +90,18 @@ export async function runCode() {
 		}
 	}
 	console.log(codeLists)
-
+	codeLists = [
+		'walk',
+		'jump',
+		'turn left',
+		'walk',
+		'jump',
+		'walk',
+		'turn left',
+		'walk',
+		'walk',
+		'walk',
+	]
 	var result = await calcResult(codeLists)
 	showStar('level', result.babyCollected)
 	toFinalPage(result)
@@ -319,4 +330,8 @@ export async function toFinalPage(res) {
 		losePage.style.display = 'block'
 		document.getElementById('error-message').innerText = res.errorRes
 	}
+}
+
+export function postScore(name) {
+	
 }

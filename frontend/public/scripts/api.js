@@ -39,3 +39,23 @@ export async function callGetNewLevelAPI(levelNumber) {
 		momDuckStartDir: 1,
 	}
 }
+
+export async function callPostNewScoreAPI(name, star, inputNum) {
+	await fetch(`${BACKEND_URL}/leaderboard`, {
+		method: "POST",
+		headers: {
+		  "Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			name: name,
+			star: star,
+			inputNum: inputNum,
+		}),
+	});
+}
+
+export async function callGetLeaderboardAPI() {
+	/** @type {Leaderboard[]} */
+	const leaderboard = await fetch(`${BACKEND_URL}/leaderboard`).then((r) => r.json());
+	return leaderboard;
+}

@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 
 import LevelRoute from "./routes/levelRoute.js";
+import LeaderboardRoute from "./routes/leaderboardRoute.js";
 
 const app = express();
 
@@ -14,5 +15,6 @@ app.use(cors());
 
 // use routes
 app.use("/getNewLevel", LevelRoute);
+app.use("/leaderboard", LeaderboardRoute);
 
 export default app;

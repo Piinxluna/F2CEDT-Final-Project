@@ -3,7 +3,7 @@
     z-index: 0;
 }
 
-#hideButton {
+/* #hideButton {
 	position: absolute;
 	z-index: 3;
 	top: 25px;
@@ -13,7 +13,7 @@
 	background: transparent;
 	border: transparent;
 	color:var(--background);
-}
+} */
 
 .changeAftShow {
 	position: fixed;
