@@ -109,7 +109,8 @@ td {
 #checkleader {
 	bottom: 0;
 	right: 5%;
-	width: 90px;
+	padding: 10px;
+	width: auto;
 	height: 40px;
 	border: 1px solid var(--border);
 	background-color: var(--accent);

@@ -30,8 +30,6 @@
 
 .star {
 	position: relative;
-	width: '6%';
-	left: 3%;
 	display: inline-block;
 }
 
@@ -104,9 +102,10 @@
 
 .center-modal-content {
 	z-index: 7;
-	padding: 20px;
+	padding: 7% 5% 7%;
 	width: 70%;
 	height: 70%;
+	border-radius: 40px;
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -115,7 +114,7 @@
 	text-align: center;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	background-color: var(--background);
-	border-color:var(--border);
+	border-color: var(--border);
 }
 
 .close {
@@ -123,6 +122,8 @@
 	top: 10px;
 	right: 10px;
 	cursor: pointer;
+	margin: 2%;
+	text-decoration: underline;
 }
 
 #runCodeButton {
@@ -142,4 +143,16 @@
 	color: var(--background);
 	background-color: var(--text);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+.bg {
+	position: relative;
+	height: auto;
+	width: 100%;
+	background-image: linear-gradient(
+		to bottom,
+		rgba(255, 0, 0, 0),
+		rgb(255, 90, 142)
+	);
+	background-color: var(--secondary);
 }
