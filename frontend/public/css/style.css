@@ -16,7 +16,6 @@ h1 {
 	font-weight: 400;
 	font-size: 56px;
 	margin: 0;
-	color: var(--text);
 }
 
 h2 {
@@ -24,19 +23,23 @@ h2 {
 	font-weight: 300;
 	font-size: 20px;
 	margin: 0;
-	color: var(--text);
 }
 
 h3 {
 	font-family: 'Kanit', sans-serif;
 	font-weight: 300;
 	font-size: 18px;
-	color: var(--text);
+}
+
+h4 {
+	font-family: 'Kanit', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
 }
 
 .fillButton {
 	position: absolute;
-	border-radius: 12px;
+	border-radius: 15px;
 	box-sizing: border-box;
 	cursor: pointer;
 	display: inline-block;
