@@ -37,7 +37,7 @@ h3 {
 	cursor: pointer;
 	display: inline-block;
 	outline: none;
-	padding: 0px;
+	/* padding: 0px; */
 	line-height: 0px;
 	text-align: center;
 	text-decoration: none;
