@@ -8,10 +8,3 @@ export const getLevel = async (req, res) => {
 
   res.status(200).json(newLevel);
 };
-
-// /** @type {import("express").RequestHandler} */
-// export const getAllLevels = async (req, res) => {
-//   const levels = await Levels.find();
-
-//   res.status(200).json(levels);
-// };
