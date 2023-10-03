@@ -52,7 +52,7 @@
 
 #hintButton:hover {
 	color: var(--background);
-	background-color: var(--text);
+	background-color: var(--greykub);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
 }
 
@@ -68,7 +68,7 @@
 
 #helpButton:hover {
 	color: var(--background);
-	background-color: var(--text);
+	background-color: var(--greykub);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
 }
 
@@ -141,7 +141,7 @@
 
 #runCodeButton:hover {
 	color: var(--background);
-	background-color: var(--text);
+	background-color: var(--greykub);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
 }
 
