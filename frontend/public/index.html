@@ -92,11 +92,20 @@
         <img id="level-star3" class="star" src="./src/star.png" width="6%" height="auto" alt="star" />
         <h1 id="levelNum">Level 0</h1>
       </div>
-
-      <div class="help1">
+      
+      <div id="taskBar">
+        <button id="checkleader" class="fillButton" >
+          <h4>Leaderboard</h4>
+        </button>
         <button id="hintButton" class="fillButton" onclick="openCenterModal1()">
           <h4>hint</h4>
         </button>
+        <button id="helpButton" class="fillButton" onclick="openCenterModal2()">
+          <h4>?</h4>
+        </button>
+      </div>
+
+      <div class="help1">
         <div id="centerModal1" class="center-modal">
           <div class="center-modal-content">
             <h3>
@@ -109,9 +118,6 @@
         </div>
       </div>
       <div class="help2">
-        <button id="helpButton" class="fillButton" onclick="openCenterModal2()">
-          <h4>?</h4>
-        </button>
         <div id="centerModal2" class="center-modal">
           <div class="center-modal-content">
             <h3>
@@ -136,9 +142,6 @@
       </div>
       
       <div class="help4">
-        <button id="checkleader" class="fillButton2" >
-          <h4>Leaderboard</h4>
-        </button>
         <div id="centerModal4" class="leader-modal">
           <div class="leader-modal-content">
             <span class="close" onclick="closeCenterModal4()">close</span>

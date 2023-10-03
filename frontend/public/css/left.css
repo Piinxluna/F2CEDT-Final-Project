@@ -40,11 +40,21 @@
 	display: block;
 }
 
+#taskBar {
+	position: relative;
+	right: 0px;
+	bottom: 0px;
+	display: inline;
+}
+
 #hintButton {
+	position: relative;
 	bottom: 0;
-	right: 5%;
+	right: 0;
+	display: inline-block;
 	width: 50px;
 	height: 40px;
+	margin: 1.5%;
 	border: 1px solid var(--border);
 	background-color: var(--accent);
 	color: var(--text);
@@ -57,8 +67,10 @@
 }
 
 #helpButton {
+	display: inline-block;
+	position: relative;
 	bottom: 0;
-	right: 5%;
+	right: 0;
 	width: 50px;
 	height: 40px;
 	border: 1px solid var(--border);
