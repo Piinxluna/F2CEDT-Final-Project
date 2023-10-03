@@ -63,7 +63,7 @@
 	/* position: relative; */
 	text-align: center;
 	display: block;
-	margin: 10%;
+	/* margin: 10%; */
 	padding: 1%;
 	width: auto;
 	height: 25px;
@@ -72,11 +72,11 @@
 	color: var(--text);
 }
 
-#delete-input-button{
+#delete-input-button {
 	position: absolute;
-    right: 240px;
-    /* bottom: 20%; */
-    display: flex;
+	right: 240px;
+	/* bottom: 20%; */
+	display: flex;
 }
 
 .add-del-button:hover {

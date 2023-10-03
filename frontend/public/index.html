@@ -39,10 +39,10 @@
       </div>
       <div id="playerContent">
         <div class="container">
-            <p>กรุณาใส่ชื่อแล้วกด submit เพื่อบันทึกคะแนนลง Leaderboard</p>
-            <label for="name">คุณชื่ออาราย:</label>
-            <input type="text" id="name" name="name">
-            <button id="submitButton">submit</button>
+          <p>กรุณาใส่ชื่อแล้วกด submit เพื่อบันทึกคะแนนลง Leaderboard</p>
+          <!-- <label for="name">คุณชื่ออาราย:</label> -->
+          <input type="text" id="name" name="name" placeholder="ชื่ออะไรฮ้าฟฟู้ว">
+          <button id="submitButton">submit</button>
         </div>
       </div>
       <div class = "endGameButDiv">
@@ -57,6 +57,21 @@
       <img class="completeImg" src="./src/momDuck_down.gif" />
       <h3 id="error-message"></h3>
       <button class="endGameBut fillButton" id="play-again-button-lose">play again</button>
+    </div>
+  </section>
+
+  <section id="mainCode">
+    <h4>
+      <button id="runCodeButton" class="fillButton">run code</button>
+    </h4>
+    <h2 class="dropdown-title">Code here</h2>
+    <div id="mainAns">
+      <div id="code-input">
+      </div>
+      <div>
+        <button id="add-input-button" class="add-del-button fillButton">add</button>
+        <button id="delete-input-button" class="add-del-button fillButton">delete</button>
+      </div>
     </div>
   </section>
 
@@ -80,40 +95,49 @@
 
       <div class="help1">
         <button id="hintButton" class="fillButton" onclick="openCenterModal1()">
-          <h3>hint</h3>
+          <h4>hint</h4>
         </button>
         <div id="centerModal1" class="center-modal">
           <div class="center-modal-content">
+            <h3>
             <span class="close" onclick="closeCenterModal1()">close</span>
+          </h3>
+            <h2>
             <p id="hintContent">Hint จ้าาาา ฮิ้นนนนน</p>
+          </h2>
           </div>
         </div>
       </div>
       <div class="help2">
         <button id="helpButton" class="fillButton" onclick="openCenterModal2()">
-          <h3>?</h3>
+          <h4>?</h4>
         </button>
         <div id="centerModal2" class="center-modal">
           <div class="center-modal-content">
+            <h3>
             <span class="close" onclick="closeCenterModal2()">close</span>
+          </h3>
+            <h2>
             <p id="helpContent">
               โอ๊ะ! แม่เป็ดละสายตาจากลูกเพียงเสี้ยววินาที ลูกเป็ดก็หายไปไหนไม่รู้แล้ว
-              และนั่นเป็นหน้าที่ของ "คุณ" ที่จะช่วยแม่เป็ดตามหาลูกตามเส้นทางที่ถูกต้อง
-              <br> เนื่องจากป่านี้ซับซ้อนและอันตรายอย่างมาก เดินผิดก้าวเดียวอาจจะหายไปตลอดกาลเลยก็ได้!!
+              <br>และนั่นเป็นหน้าที่ของ "คุณ" ที่จะช่วยแม่เป็ดตามหาลูกตามเส้นทางที่ถูกต้อง
+              <br>
+              <br>เนื่องจากป่านี้ซับซ้อนและอันตรายอย่างมาก เดินผิดก้าวเดียวอาจจะหายไปตลอดกาลเลยก็ได้!!
               ดังนั้นคุณจะต้องช่วยแม่เป็ดตามหาลูกๆ และพากลับบ้านอย่างปลอดภัย!
               โดยการสังเกตและคิดว่าจะให้แม่เป็ดเดินไปทางไหน แล้วเลือกโค้ดในช่องตามที่คิดไว้ได้เลย
               <br>
               <br>
-              เป้าหมายของเกม : ใช้คำสั่งเพื่อควบคุมแม่เป็ด ให้เดินไปหาลูกเป็ดให้ครบทุกตัว
-              จากนั้นให้เดินไปที่บ้านให้เร็วที่สุด!
+              <h3>เป้าหมายของเกม : ใช้คำสั่งเพื่อควบคุมแม่เป็ด ให้เดินไปหาลูกเป็ดให้ครบทุกตัว
+                จากนั้นให้เดินไปที่บ้านให้เร็วที่สุด!</h3>
             </p>
+          </h2>
           </div>
         </div>
       </div>
       
       <div class="help4">
         <button id="checkleader" class="fillButton2" >
-          <h3>Leaderboard</h3>
+          <h4>Leaderboard</h4>
         </button>
         <div id="centerModal4" class="leader-modal">
           <div class="leader-modal-content">
@@ -133,31 +157,10 @@
       </div>
   
     </div>
-    <h3>
-      <button id="runCodeButton" class="fillButton">run code</button>
-    </h3>
+    
+    <div class="bg"></div>
   </section>
 
-  <!-- <div class="changeAftShow">
-    <h3>
-      <button id="hideButton" onclick="hidecode()">hide</button>
-    </h3>
-  </div> -->
-
-  <section id="mainCode">
-    <h3>
-      <button id="runCodeButton2" class="fillButton">run code</button>
-    </h3>
-    <h2 class="dropdown-title">Code here</h2>
-    <div id="mainAns">
-      <div id="code-input">
-      </div>
-      <div>
-        <button id="add-input-button" class="fillButton add-del-button">add</button>
-        <button id="delete-input-button" class="fillButton add-del-button">delete</button>
-      </div>
-    </div>
-  </section>
 </body>
 
 </html>
