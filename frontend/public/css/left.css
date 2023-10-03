@@ -30,8 +30,6 @@
 
 .star {
 	position: relative;
-	width: '6%';
-	left: 3%;
 	display: inline-block;
 }
 
@@ -54,7 +52,7 @@
 
 #hintButton:hover {
 	color: var(--background);
-	background-color: var(--text);
+	background-color: var(--greykub);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
 }
 
@@ -70,7 +68,7 @@
 
 #helpButton:hover {
 	color: var(--background);
-	background-color: var(--text);
+	background-color: var(--greykub);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
 }
 
@@ -104,9 +102,10 @@
 
 .center-modal-content {
 	z-index: 7;
-	padding: 20px;
+	padding: 7% 5% 7%;
 	width: 70%;
 	height: 70%;
+	border-radius: 40px;
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -114,15 +113,25 @@
 	border: 1px solid;
 	text-align: center;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	background-image: linear-gradient(
+		to bottom,
+		rgba(255, 0, 0, 0),
+		rgba(255, 0, 0, 0),
+		rgba(255, 0, 0, 0) 20%,
+		rgba(255, 146, 201, 0.258)
+	);
 	background-color: var(--background);
-	border-color:var(--border);
+	border-color: var(--border);
 }
 
 .close {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 0px;
+	right: 0px;
 	cursor: pointer;
+	margin: 3%;
+	color: var(--greykub);
+	text-decoration: underline;
 }
 
 #runCodeButton {
@@ -140,6 +149,18 @@
 
 #runCodeButton:hover {
 	color: var(--background);
-	background-color: var(--text);
+	background-color: var(--greykub);
 	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+.bg {
+	position: relative;
+	height: auto;
+	width: 100%;
+	background-image: linear-gradient(
+		to bottom,
+		rgba(255, 0, 0, 0),
+		rgb(255, 90, 142)
+	);
+	background-color: var(--secondary);
 }

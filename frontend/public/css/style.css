@@ -19,12 +19,19 @@ h1 {
 }
 
 h2 {
-	font-weight: 450;
-	font-size: 24px;
+	font-family: 'Kanit', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
 	margin: 0;
 }
 
 h3 {
+	font-family: 'Kanit', sans-serif;
+	font-weight: 300;
+	font-size: 18px;
+}
+
+h4 {
 	font-family: 'Kanit', sans-serif;
 	font-weight: 300;
 	font-size: 14px;
@@ -32,12 +39,11 @@ h3 {
 
 .fillButton {
 	position: absolute;
-	border-radius: 12px;
+	border-radius: 15px;
 	box-sizing: border-box;
 	cursor: pointer;
 	display: inline-block;
 	outline: none;
-	padding: 0px;
 	line-height: 0px;
 	text-align: center;
 	text-decoration: none;
