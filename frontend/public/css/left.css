@@ -24,13 +24,17 @@
 
 .levelScore {
 	position: relative;
-	left: 24px;
-	top: 12px;
+	left: 0px;
+	top: 0px;
+	display: inline-block;
+	padding: 0px;
+	width: 50%;
 }
 
 .star {
 	position: relative;
 	display: inline-block;
+	padding: 0px;
 }
 
 #levelNum {
@@ -38,20 +42,22 @@
 	left: 0;
 	bottom: 0;
 	display: block;
+	padding: 0px;
 }
 
 #taskBar {
-	position: relative;
+	position: absolute;
+	display: inline-block;
 	right: 0px;
 	bottom: 0px;
-	display: inline;
+	padding: 0px;
 }
 
 #hintButton {
 	position: relative;
 	bottom: 0;
 	right: 0;
-	display: inline-block;
+	display: block;
 	width: 50px;
 	height: 40px;
 	margin: 1.5%;
@@ -67,7 +73,7 @@
 }
 
 #helpButton {
-	display: inline-block;
+	display: block;
 	position: relative;
 	bottom: 0;
 	right: 0;
