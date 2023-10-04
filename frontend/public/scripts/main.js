@@ -1,6 +1,7 @@
 import {
 	runCode,
 	showNewLevel,
+	showOldLevel,
 	addInputLine,
 	deleteInputLine,
 	postScore,
@@ -27,9 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	const playAgainButton1 = document.getElementById('play-again-button-win')
-	playAgainButton1.addEventListener('click', showThisLevel)
+	playAgainButton1.addEventListener('click', () => {
+		const finPage = document.getElementById('gameOver')
+		finPage.style.display = 'none'
+		showOldLevel()
+	})
 	const playAgainButton2 = document.getElementById('play-again-button-lose')
-	playAgainButton2.addEventListener('click', showThisLevel)
+	playAgainButton2.addEventListener('click', () => {
+		const finPage = document.getElementById('gameOver')
+		finPage.style.display = 'none'
+		showOldLevel()
+	})
 
 	const nextLevelButton = document.getElementById('next-level-button')
 	nextLevelButton.addEventListener('click', () => {
@@ -58,14 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	closeCenterModal2()
 	closeCenterModal4()
 })
-
-function showThisLevel() {
-	let levelNum = document.getElementById('levelNum').innerText
-	levelNum = levelNum.slice(6)
-	const finPage = document.getElementById('gameOver')
-	finPage.style.display = 'none'
-	showNewLevel(levelNum - 1)
-}
 
 // ปิดหน้า hint
 function closeCenterModal1() {
