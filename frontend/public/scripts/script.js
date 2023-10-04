@@ -41,11 +41,6 @@ function closeCenterModal2() {
 	centerModal2.style.display = 'none'
 }
 
-window.onload = function () {
-	closeCenterModal1()
-	closeCenterModal2()
-}
-
 function checkFor(object, codeGuide) {
 	let exportedCodeGuide = `{ choice: ['${codeGuide.choice[0]}'`
 	for (let i = 1; i < codeGuide.choice.length; i++) {

@@ -8,7 +8,6 @@
   <script type="module" src="./scripts/main.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/leaderboard.js"></script>
-  <script src="./scripts/leaderboardTable.js"></script>
   <link type="text/css" rel="stylesheet" href="./css/style.css">
   <link type="text/css" rel="stylesheet" href="./css/responsive.css">
   <link type="text/css" rel="stylesheet" href="./css/codeinput.css" />
@@ -45,7 +44,7 @@
           <button id="submitButton">submit</button>
         </div>
       </div>
-      <div class = "endGameButDiv">
+      <div class="endGameButDiv">
         <button class="endGameBut fillButton" id="play-again-button-win">play again</button>
         <button class="endGameBut fillButton" id="next-level-button">next level</button>
       </div>
@@ -94,11 +93,11 @@
         <div id="centerModal1" class="center-modal">
           <div class="center-modal-content">
             <h3>
-            <span class="close" onclick="closeCenterModal1()">close</span>
-          </h3>
+              <span class="close" onclick="closeCenterModal1()">close</span>
+            </h3>
             <h2>
-            <p id="hintContent">Hint จ้าาาา ฮิ้นนนนน</p>
-          </h2>
+              <p id="hintContent">Hint จ้าาาา ฮิ้นนนนน</p>
+            </h2>
           </div>
         </div>
       </div>
@@ -125,28 +124,33 @@
           </div>
         </div>
       </div>
-      
+
       <div class="help4">
+        <button id="checkleader" class="fillButton2" onclick="openCenterModal4()">
+          <h4>Leaderboard</h4>
+        </button>
         <div id="centerModal4" class="leader-modal">
           <div class="leader-modal-content">
             <span class="close" onclick="closeCenterModal4()">close</span>
             <div id="leaderboardContent">
               <h1>Leaderboard</h1>
               <table id="leaderboardTable">
-                <tr>
-                  <th>Rank</th>
-                  <th>Name</th>
-                  <th>Score</th>
-                  <th>Number of input</th>
-                </tr>
-              </table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Number of input</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboardTableBody"></tbody>
             </div>
           </div>
         </div>
       </div>
-  
+
     </div>
-    
+
     <div class="bg"></div>
   </section>
 

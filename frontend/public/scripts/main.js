@@ -6,7 +6,7 @@ import {
 	postScore,
 } from './codeExecution.js'
 
-import { fetchAndDrawTable } from './leaderboardTable.js'
+import { showLeaderboard } from './leaderboardTable.js'
 
 showNewLevel(0)
 
@@ -39,20 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		finPage.style.display = 'none'
 		showNewLevel(levelNum)
 	})
-	document
-		.getElementById('submitButton')
-		.addEventListener('click', function () {
-			var name = document.getElementById('name').value
-			if (name) {
-				postScore(name)
-			} else {
-				alert('กรอกชื่อก่อนนะจ้ะ')
-			}
-		})
+
+	const submitButton = document.getElementById('submitButton')
+	submitButton.addEventListener('click', function () {
+		var name = document.getElementById('name').value
+		if (name) {
+			postScore(name)
+		} else {
+			alert('กรอกชื่อก่อนนะจ้ะ')
+		}
+	})
 	const leaderboardButton = document.getElementById('checkleader')
 	leaderboardButton.addEventListener('click', () => {
-		fetchAndDrawTable()
+		showLeaderboard()
 	})
+
+	closeCenterModal1()
+	closeCenterModal2()
+	closeCenterModal4()
 })
 
 function showThisLevel() {
@@ -61,4 +65,23 @@ function showThisLevel() {
 	const finPage = document.getElementById('gameOver')
 	finPage.style.display = 'none'
 	showNewLevel(levelNum - 1)
+}
+
+// ปิดหน้า hint
+function closeCenterModal1() {
+	console.log('test')
+	var centerModal1 = document.getElementById('centerModal1')
+	centerModal1.style.display = 'none'
+}
+
+// ปิดหน้า ?
+function closeCenterModal2() {
+	var centerModal2 = document.getElementById('centerModal2')
+	centerModal2.style.display = 'none'
+}
+
+// ปิดหน้า leaderboard
+function closeCenterModal4() {
+	var centerModal4 = document.getElementById('centerModal4')
+	centerModal4.style.display = 'none'
 }
