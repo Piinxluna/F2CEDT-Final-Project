@@ -8,7 +8,7 @@
 
 .dropdown-title {
 	text-align: center;
-	font-size: xx-large;
+	/* font-size: xx-large; */
 	border: none;
 }
 
@@ -19,6 +19,7 @@
 
 .dropdown-select {
 	padding: 5px;
+	border-radius: 12px;
 	background-color: var(--background);
 	border: 1px solid var(--ligth-border);
 	border-radius: 2px;
