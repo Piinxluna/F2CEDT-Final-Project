@@ -36,20 +36,14 @@ function checkFor(object, codeGuide) {
 		)
 		let forDetail = document.createElement('div')
 		forDetail.innerHTML = `<div>
-      <label class="for-informm">int i = </label>
-      <input type="text" class="for-i"></input>
-      <label class="for-informm">; i </label>
-      <input type="text" class="for-i"></input>
-      <label class="for-informm">; i </label>
-		  <select class="dropdown-select">
-		  <option value="++" class="dropdown-choice"> ++ </option>
-		  <option value="--" class="dropdown-choice"> -- </option>
-		  </select>
+      <label class="for-informm">int i = 0; i < </label>
+      <input type="text" class="for-i" id="condition-value-${forId}">
+      <label class="for-informm">; i++</label>
 		</div>`
 		forDetail.innerHTML += `<div>
 		<p> { </p>
 		<div id="for-code-input-${forId}">
-		<div id="for-${forId}-movement-div-1">
+			<div id="for-${forId}-movement-div-1">
       	<label for="for-${forId}-movement-1" class="order-dropdown"> 1 : </label>
       	<select id="for-${forId}-movement-1" class="dropdown-select">
         	<option disabled>-Choose Option-</option>
