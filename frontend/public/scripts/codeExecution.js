@@ -85,8 +85,29 @@ export async function runCode() {
 			for (let j = 1; j <= forCodeInput.children.length; j++) {
 				console.log(i, j)
 				let forInput = document.getElementById(`for-${i}-movement-${j}`)
-				console.log(forInput)
-				codeInput.push(forInput.value)
+				console.log(forInput.value)
+				if (forInput.value === 'for') {
+					let conditionValue2 = document.getElementById(`condition-value2-${j}`)
+					let forCodeInput2 = document.getElementById(
+						`for2-code-input-${i}-${j}`
+					)
+					let codeInput2 = []
+					for (let k = 1; k <= forCodeInput2.children.length; k++) {
+						console.log(i, j)
+						let forInput = document.getElementById(
+							`for2-${i}-${j}-movement-${k}`
+						)
+						console.log(forInput)
+						codeInput2.push(forInput.value)
+					}
+					codeInput.push({
+						name: input.value,
+						condition: conditionValue2.value,
+						forInput: codeInput2,
+					})
+				} else {
+					codeInput.push(forInput.value)
+				}
 			}
 			codeLists.push({
 				name: input.value,
@@ -127,7 +148,15 @@ export async function calcResult(codeLists) {
 		if (data.name == 'for') {
 			for (let i = 0; i < data.condition; i++) {
 				for (let forInput of data.forInput) {
-					await runCommand(forInput)
+					if (forInput.name == 'for') {
+						for (let i = 0; i < forInput.condition; i++) {
+							for (let forInput2 of forInput.forInput) {
+								await runCommand(forInput2)
+							}
+						}
+					} else {
+						await runCommand(data)
+					}
 				}
 			}
 		} else {
@@ -269,7 +298,7 @@ export async function showNewLevel(levelNumber) {
 	for (let i = 1; i < codeGuide.choice.length; i++) {
 		exportedCodeGuide += `, '${codeGuide.choice[i]}'`
 	}
-	exportedCodeGuide += `], forLimit: 5 }`
+	exportedCodeGuide += `], forLimit: ${codeGuide.forLimit}, forNum: ${codeGuide.forNum} }`
 
 	startPos = newLev.momDuckStartPos
 	pos = startPos
