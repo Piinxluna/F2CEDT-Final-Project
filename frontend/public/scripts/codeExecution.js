@@ -82,8 +82,10 @@ export async function runCode() {
 			let conditionValue = document.getElementById(`condition-value-${i}`)
 			let forCodeInput = document.getElementById(`for-code-input-${i}`)
 			let codeInput = []
-			for (let j = 0; j < forCodeInput.length; j++) {
+			for (let j = 1; j <= forCodeInput.children.length; j++) {
+				console.log(i, j)
 				let forInput = document.getElementById(`for-${i}-movement-${j}`)
+				console.log(forInput)
 				codeInput.push(forInput.value)
 			}
 			codeLists.push({
@@ -122,18 +124,14 @@ export async function calcResult(codeLists) {
 	var errorRes = 'เดินไปไม่ถึงอ่า T^T'
 	for (let data of codeLists) {
 		isError = false
-		if (data == 'walk') {
-			await walk()
-		} else if (data == 'jump') {
-			await jump()
-		} else if (data == 'turn left') {
-			console.log('turn left')
-			await turn(-1)
-		} else if (data == 'turn right') {
-			console.log('turn right')
-			await turn(1)
-		} else if (data.name == 'for') {
-			console.log('is for')
+		if (data.name == 'for') {
+			for (let i = 0; i < data.condition; i++) {
+				for (let forInput of data.forInput) {
+					await runCommand(forInput)
+				}
+			}
+		} else {
+			await runCommand(data)
 		}
 
 		for (let i in babyDuckPos) {
@@ -189,6 +187,18 @@ export async function calcResult(codeLists) {
 			return null
 		} else {
 			return mapArray[pos[0]][pos[1]]
+		}
+	}
+
+	async function runCommand(data) {
+		if (data == 'walk') {
+			await walk()
+		} else if (data == 'jump') {
+			await jump()
+		} else if (data == 'turn left') {
+			await turn(-1)
+		} else if (data == 'turn right') {
+			await turn(1)
 		}
 	}
 
