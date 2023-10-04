@@ -4,27 +4,6 @@
 	padding: 45px 5% 50px;
 }
 
-/* #hideButton {
-	position: absolute;
-	z-index: 3;
-	top: 25px;
-	right: 20px;
-	outline: none;
-	cursor: pointer;
-	background: transparent;
-	border: transparent;
-	color:var(--background);
-} */
-
-/* .changeAftShow {
-	position: fixed;
-	right: 0;
-	top: 0;
-	height: auto;
-	width: 10%;
-	z-index: 3;
-} */
-
 .mainAns {
 	padding: 20px;
 }
