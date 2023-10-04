@@ -10,18 +10,18 @@ import {
 /** @typedef {import("./config.js").Level} Level */
 
 var duckPic = document.getElementById('mom-duck-pic')
-var dir = 0 // 1 = Up, 2 = Right, 3 = Down, 4 = Left
 var goal = [0, 0]
 var startPos = []
+var startDir = 0
 var babyDuckPos = []
 var mapArray = []
 var codeGuide = {}
 let exportedCodeGuide
 
+var dir = 0 // 1 = Up, 2 = Right, 3 = Down, 4 = Left
 var pos = [0, 0]
 var nextPos = []
 var inputInd = 0
-var forInputInd = []
 var codeLists = []
 
 var star = 0
@@ -75,6 +75,7 @@ export async function runCode() {
 	setUpMap(mapPos, blockSize, pos, dir, babyDuckPos)
 
 	// get arrays from codeInput field
+	codeLists = []
 	for (let i = 1; i <= inputInd; i++) {
 		let input = document.getElementById(`movement-${i}`)
 		if (input.value === 'for') {
@@ -111,10 +112,6 @@ export async function runCode() {
 	star = result.babyCollected
 	showStar('level', star)
 	toFinalPage(result)
-
-	// inputInd = 1
-	// codeLists = []
-	// addInputLine()
 }
 
 export async function calcResult(codeLists) {
@@ -211,14 +208,7 @@ export async function calcResult(codeLists) {
 
 	async function jump() {
 		nextTarget(1)
-		if (getPosData(nextPos) == '-') {
-			pos = nextPos
-			await displayPos(
-				duckPic,
-				pos.map(x => x * blockSize),
-				mapPos
-			)
-		} else if (getPosData(nextPos) == 'r') {
+		if (getPosData(nextPos) == 'r') {
 			nextTarget(2)
 			pos = nextPos
 			await displayPos(
@@ -243,10 +233,9 @@ export async function calcResult(codeLists) {
 	}
 }
 export async function showOldLevel() {
-	let newLev = await callGetNewLevelAPI(levelNumber)
-	pos = newLev.momDuckStartPos
-	dir = newLev.momDuckStartDir
-	setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos)
+	pos = startPos
+	dir = startDir
+	setUpMap(mapPos, blockSize, startPos, startDir, babyDuckPos)
 }
 
 export async function showNewLevel(levelNumber) {
@@ -275,7 +264,9 @@ export async function showNewLevel(levelNumber) {
 	startPos = newLev.momDuckStartPos
 	pos = startPos
 
-	dir = newLev.momDuckStartDir
+	startDir = newLev.momDuckStartDir
+	dir = startDir
+
 	goal = newLev.goalPos
 
 	for (let i = 0; i < newLev.babyDuckPos.length; i++) {
@@ -290,6 +281,8 @@ export async function showNewLevel(levelNumber) {
 
 	setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos)
 
+	const codeInput = document.getElementById('code-input')
+	codeInput.innerHTML = ''
 	inputInd = 0
 	codeLists = []
 	addInputLine() // Call function show code input
