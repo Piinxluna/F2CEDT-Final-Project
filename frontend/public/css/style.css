@@ -38,7 +38,7 @@ h4 {
 }
 
 .fillButton {
-	position: absolute;
+	/* position: absolute; */
 	border-radius: 15px;
 	box-sizing: border-box;
 	cursor: pointer;

@@ -1,9 +1,11 @@
 .mainAns {
 	font-size: medium;
 }
+
 .mainAns.movement-title {
 	padding: 10px;
 }
+
 .dropdown-title {
 	text-align: center;
 	font-size: xx-large;
@@ -60,23 +62,16 @@
 }
 
 .add-del-button {
-	/* position: relative; */
+	position: relative;
 	text-align: center;
-	display: block;
 	/* margin: 10%; */
-	padding: 1%;
+	padding: 1.5%;
+	margin: 0 2% 0;
 	width: auto;
 	height: 25px;
 	border: 1px solid var(--border);
 	background-color: var(--background);
 	color: var(--text);
-}
-
-#delete-input-button {
-	position: absolute;
-	right: 240px;
-	/* bottom: 20%; */
-	display: flex;
 }
 
 .add-del-button:hover {
