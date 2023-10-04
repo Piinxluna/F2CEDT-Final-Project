@@ -77,33 +77,36 @@ export async function runCode() {
 	// get arrays from codeInput field
 	for (let i = 1; i <= inputInd; i++) {
 		let input = document.getElementById(`movement-${i}`)
-		if (typeof value != 'object') {
-			codeLists.push(input.value)
-		} else if (data.name == 'for') {
-			/* for structure! 
-			{
-				name : "for",
-				initial : (let i = initial),
-				condition : == < > <= >=,
-				conditionValue : (;i = VALUE;),
-				step : 1 or -1 (i++ / i--)
+		if (input.value === 'for') {
+			let conditionValue = document.getElementById(`condition-value-${i}`)
+			let forCodeInput = document.getElementById(`for-code-input-${i}`)
+			let codeInput = []
+			for (let j = 0; j < forCodeInput.length; j++) {
+				let forInput = document.getElementById(`for-${i}-movement-${j}`)
+				codeInput.push(forInput.value)
 			}
-			*/
+			codeLists.push({
+				name: input.value,
+				condition: conditionValue.value,
+				forInput: codeInput,
+			})
+		} else {
+			codeLists.push(input.value)
 		}
 	}
 	console.log(codeLists)
-	codeLists = [
-		'walk',
-		'jump',
-		'turn left',
-		'walk',
-		'jump',
-		'walk',
-		'turn left',
-		'walk',
-		'walk',
-		'walk',
-	]
+	// codeLists = [
+	// 	'walk',
+	// 	'jump',
+	// 	'turn left',
+	// 	'walk',
+	// 	'jump',
+	// 	'walk',
+	// 	'turn left',
+	// 	'walk',
+	// 	'walk',
+	// 	'walk',
+	// ]
 	var result = await calcResult(codeLists)
 	star = result.babyCollected
 	showStar('level', star)
@@ -143,7 +146,8 @@ export async function calcResult(codeLists) {
 		} else if (data == 'turn right') {
 			console.log('turn right')
 			await turn(1)
-		} else if (data.slice(0, 3) == 'for') {
+		} else if (data.name == 'for') {
+			console.log('is for')
 		}
 
 		for (let i in babyDuckPos) {
