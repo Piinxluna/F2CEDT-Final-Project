@@ -17,15 +17,6 @@
 	z-index: -10;
 }
 
-.changeAftShow {
-	display: none;
-}
-
-#hideButton {
-	visibility: hidden;
-	display: none;
-}
-
 @media only screen and (min-width: 768px) {
 	/* For desktop: */
 	#mainPart {
