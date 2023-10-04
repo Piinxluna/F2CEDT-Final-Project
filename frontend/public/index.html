@@ -8,7 +8,6 @@
   <script type="module" src="./scripts/main.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/leaderboard.js"></script>
-  <script src="./scripts/leaderboardTable.js"></script>
   <link type="text/css" rel="stylesheet" href="./css/style.css">
   <link type="text/css" rel="stylesheet" href="./css/responsive.css">
   <link type="text/css" rel="stylesheet" href="./css/codeinput.css" />
@@ -45,7 +44,7 @@
           <button id="submitButton">submit</button>
         </div>
       </div>
-      <div class = "endGameButDiv">
+      <div class="endGameButDiv">
         <button class="endGameBut fillButton" id="play-again-button-win">play again</button>
         <button class="endGameBut fillButton" id="next-level-button">next level</button>
       </div>
@@ -100,11 +99,11 @@
         <div id="centerModal1" class="center-modal">
           <div class="center-modal-content">
             <h3>
-            <span class="close" onclick="closeCenterModal1()">close</span>
-          </h3>
+              <span class="close" onclick="closeCenterModal1()">close</span>
+            </h3>
             <h2>
-            <p id="hintContent">Hint จ้าาาา ฮิ้นนนนน</p>
-          </h2>
+              <p id="hintContent">Hint จ้าาาา ฮิ้นนนนน</p>
+            </h2>
           </div>
         </div>
       </div>
@@ -115,28 +114,28 @@
         <div id="centerModal2" class="center-modal">
           <div class="center-modal-content">
             <h3>
-            <span class="close" onclick="closeCenterModal2()">close</span>
-          </h3>
+              <span class="close" onclick="closeCenterModal2()">close</span>
+            </h3>
             <h2>
-            <p id="helpContent">
-              โอ๊ะ! แม่เป็ดละสายตาจากลูกเพียงเสี้ยววินาที ลูกเป็ดก็หายไปไหนไม่รู้แล้ว
-              <br>และนั่นเป็นหน้าที่ของ "คุณ" ที่จะช่วยแม่เป็ดตามหาลูกตามเส้นทางที่ถูกต้อง
-              <br>
-              <br>เนื่องจากป่านี้ซับซ้อนและอันตรายอย่างมาก เดินผิดก้าวเดียวอาจจะหายไปตลอดกาลเลยก็ได้!!
-              ดังนั้นคุณจะต้องช่วยแม่เป็ดตามหาลูกๆ และพากลับบ้านอย่างปลอดภัย!
-              โดยการสังเกตและคิดว่าจะให้แม่เป็ดเดินไปทางไหน แล้วเลือกโค้ดในช่องตามที่คิดไว้ได้เลย
-              <br>
-              <br>
+              <p id="helpContent">
+                โอ๊ะ! แม่เป็ดละสายตาจากลูกเพียงเสี้ยววินาที ลูกเป็ดก็หายไปไหนไม่รู้แล้ว
+                <br>และนั่นเป็นหน้าที่ของ "คุณ" ที่จะช่วยแม่เป็ดตามหาลูกตามเส้นทางที่ถูกต้อง
+                <br>
+                <br>เนื่องจากป่านี้ซับซ้อนและอันตรายอย่างมาก เดินผิดก้าวเดียวอาจจะหายไปตลอดกาลเลยก็ได้!!
+                ดังนั้นคุณจะต้องช่วยแม่เป็ดตามหาลูกๆ และพากลับบ้านอย่างปลอดภัย!
+                โดยการสังเกตและคิดว่าจะให้แม่เป็ดเดินไปทางไหน แล้วเลือกโค้ดในช่องตามที่คิดไว้ได้เลย
+                <br>
+                <br>
               <h3>เป้าหมายของเกม : ใช้คำสั่งเพื่อควบคุมแม่เป็ด ให้เดินไปหาลูกเป็ดให้ครบทุกตัว
                 จากนั้นให้เดินไปที่บ้านให้เร็วที่สุด!</h3>
-            </p>
-          </h2>
+              </p>
+            </h2>
           </div>
         </div>
       </div>
-      
+
       <div class="help4">
-        <button id="checkleader" class="fillButton2" >
+        <button id="checkleader" class="fillButton2" onclick="openCenterModal4()">
           <h4>Leaderboard</h4>
         </button>
         <div id="centerModal4" class="leader-modal">
@@ -145,19 +144,22 @@
             <div id="leaderboardContent">
               <h1>Leaderboard</h1>
               <table id="leaderboardTable">
-                <tr>
-                  <th>Rank</th>
-                  <th>Name</th>
-                  <th>Score</th>
-                  <th>Number of input</th>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Number of input</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboardTableBody"></tbody>
             </div>
           </div>
         </div>
       </div>
-  
+
     </div>
-    
+
     <div class="bg"></div>
   </section>
 

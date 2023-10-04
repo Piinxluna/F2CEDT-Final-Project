@@ -1,4 +1,4 @@
-import { callGetNewLevelAPI } from './api.js'
+import { callGetNewLevelAPI, callPostNewScoreAPI } from './api.js'
 import {
 	changeDirection,
 	displayPos,
@@ -23,6 +23,8 @@ var nextPos = []
 var inputInd = 0
 var forInputInd = []
 var codeLists = []
+
+var star = 0
 
 // Get map size
 const mapBackground = document.getElementById('map-background')
@@ -103,7 +105,8 @@ export async function runCode() {
 		'walk',
 	]
 	var result = await calcResult(codeLists)
-	showStar('level', result.babyCollected)
+	star = result.babyCollected
+	showStar('level', star)
 	toFinalPage(result)
 
 	inputInd = 1
@@ -332,6 +335,6 @@ export async function toFinalPage(res) {
 	}
 }
 
-export function postScore(name) {
-	
+export async function postScore(name) {
+	await callPostNewScoreAPI(name, star, codeLists.length)
 }

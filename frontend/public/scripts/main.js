@@ -6,7 +6,7 @@ import {
 	postScore,
 } from './codeExecution.js'
 
-import { fetchAndDrawTable } from './leaderboardTable.js'
+import { showLeaderboard } from './leaderboardTable.js'
 
 showNewLevel(0)
 
@@ -39,19 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		finPage.style.display = 'none'
 		showNewLevel(levelNum)
 	})
-	document
-		.getElementById('submitButton')
-		.addEventListener('click', function () {
-			var name = document.getElementById('name').value
-			if (name) {
-				postScore(name)
-			} else {
-				alert('กรอกชื่อก่อนนะจ้ะ')
-			}
-		})
+
+	const submitButton = document.getElementById('submitButton')
+	submitButton.addEventListener('click', function () {
+		var name = document.getElementById('name').value
+		if (name) {
+			postScore(name)
+		} else {
+			alert('กรอกชื่อก่อนนะจ้ะ')
+		}
+	})
 	const leaderboardButton = document.getElementById('checkleader')
 	leaderboardButton.addEventListener('click', () => {
-		fetchAndDrawTable()
+		showLeaderboard()
 	})
 })
 
