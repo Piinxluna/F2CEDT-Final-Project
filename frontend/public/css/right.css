@@ -1,6 +1,7 @@
 #mainCode {
 	background-color: var(--secondary);
 	z-index: 0;
+	padding: 45px 5% 50px;
 }
 
 /* #hideButton {
