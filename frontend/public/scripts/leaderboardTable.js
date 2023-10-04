@@ -19,8 +19,3 @@ export async function showLeaderboard() {
 		count++
 	}
 }
-
-export async function showNewLevel(levelNumber) {
-	let newLev = await callGetNewLevelAPI(levelNumber)
-	console.log(newLev)
-}

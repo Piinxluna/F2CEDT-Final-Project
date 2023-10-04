@@ -17,8 +17,3 @@ function closeCenterModal4() {
 	var centerModal4 = document.getElementById('centerModal4')
 	centerModal4.style.display = 'none'
 }
-
-window.onload = function () {
-	// closeCenterModal3()
-	closeCenterModal4()
-}

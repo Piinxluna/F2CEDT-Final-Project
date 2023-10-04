@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	leaderboardButton.addEventListener('click', () => {
 		showLeaderboard()
 	})
+
+	closeCenterModal1()
+	closeCenterModal2()
+	closeCenterModal4()
 })
 
 function showThisLevel() {
@@ -61,4 +65,23 @@ function showThisLevel() {
 	const finPage = document.getElementById('gameOver')
 	finPage.style.display = 'none'
 	showNewLevel(levelNum - 1)
+}
+
+// ปิดหน้า hint
+function closeCenterModal1() {
+	console.log('test')
+	var centerModal1 = document.getElementById('centerModal1')
+	centerModal1.style.display = 'none'
+}
+
+// ปิดหน้า ?
+function closeCenterModal2() {
+	var centerModal2 = document.getElementById('centerModal2')
+	centerModal2.style.display = 'none'
+}
+
+// ปิดหน้า leaderboard
+function closeCenterModal4() {
+	var centerModal4 = document.getElementById('centerModal4')
+	centerModal4.style.display = 'none'
 }
