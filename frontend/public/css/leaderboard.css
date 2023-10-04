@@ -43,16 +43,27 @@ input[type='text'] {
 	border: 2px solid black;
 }
 
+#leaderboardTable {
+	width: 100%;
+	border-collapse: collapse;
+	overflow-x: auto;
+}
+
 table,
 th,
 td {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 }
 
 th,
 td {
 	padding: 10px;
 	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+td:hover {
+	background-color: var(--primary);
 }
 
 #inputname {
@@ -125,6 +136,7 @@ td {
 	width: 70%;
 	height: 70%;
 	position: fixed;
+	border-radius: 20px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -154,6 +166,7 @@ td {
 	padding: 20px;
 	width: 70%;
 	height: 70%;
+	border-radius: 20px;
 	position: fixed;
 	top: 50%;
 	left: 50%;
