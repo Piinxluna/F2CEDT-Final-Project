@@ -88,6 +88,7 @@ td:hover {
 	right: 0;
 	width: auto;
 	height: 40px;
+	margin: 1.5%;
 	padding: 0 4px 0;
 	border: 1px solid var(--border);
 	background-color: var(--accent);
