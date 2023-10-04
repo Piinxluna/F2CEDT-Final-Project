@@ -112,20 +112,9 @@ export async function runCode() {
 	showStar('level', star)
 	toFinalPage(result)
 
-	inputInd = 1
-	codeLists = []
-	const codeInput = document.getElementById('code-input')
-	codeInput.innerHTML = `
-    <div id="movement-div-1">
-      <label for="movement-1" class="order-dropdown"> 1 : </label>
-      <select id="movement-1" class="dropdown-select">
-        <option disabled>-Choose Option-</option>
-        <option value="walk" class="dropdown-choice">walk()</option>
-        <option value="jump" class="dropdown-choice">jump()</option>
-        <option value="turn left" class="dropdown-choice">turn left()</option>
-        <option value="turn right" class="dropdown-choice">turn right()</option>
-      </select>
-    </div>`
+	// inputInd = 1
+	// codeLists = []
+	// addInputLine()
 }
 
 export async function calcResult(codeLists) {
@@ -253,6 +242,12 @@ export async function calcResult(codeLists) {
 		await changeDirection(dir)
 	}
 }
+export async function showOldLevel() {
+	let newLev = await callGetNewLevelAPI(levelNumber)
+	pos = newLev.momDuckStartPos
+	dir = newLev.momDuckStartDir
+	setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos)
+}
 
 export async function showNewLevel(levelNumber) {
 	let newLev = await callGetNewLevelAPI(levelNumber)
@@ -295,6 +290,8 @@ export async function showNewLevel(levelNumber) {
 
 	setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos)
 
+	inputInd = 0
+	codeLists = []
 	addInputLine() // Call function show code input
 }
 
