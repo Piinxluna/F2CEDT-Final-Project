@@ -1,5 +1,6 @@
 .mainAns {
 	font-size: medium;
+	max-width: 80%;
 }
 
 .mainAns.movement-title {
@@ -8,8 +9,9 @@
 
 .dropdown-title {
 	text-align: center;
-	/* font-size: xx-large; */
+	font-size: xx-large; 
 	border: none;
+	margin : -2%
 }
 
 .dropdown {
@@ -99,7 +101,7 @@
 }
 
 .for-i {
-	max-width: 30%;
+	max-width: 10%;
 }
 
 #code-for-input {
@@ -107,4 +109,8 @@
 }
 #movement-div-1 {
 	margin: 2% 12%;
+}
+
+.in-for{
+	width: max-content;
 }
