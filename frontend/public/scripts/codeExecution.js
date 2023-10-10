@@ -343,4 +343,5 @@ export async function postScore(name) {
 	let levelNum = document.getElementById('levelNum').innerText
 	levelNum = levelNum.slice(6)
 	await callPostNewScoreAPI(name, star, codeLists.length, levelNum)
+	alert('อัพเดตข้อมูลเรียบร้อย')
 }
