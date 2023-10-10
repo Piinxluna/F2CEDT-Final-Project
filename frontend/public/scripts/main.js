@@ -60,7 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 	const leaderboardButton = document.getElementById('checkleader')
 	leaderboardButton.addEventListener('click', () => {
-		showLeaderboard()
+		let levelNum = document.getElementById('levelNum').innerText
+		levelNum = levelNum.slice(6)
+		showLeaderboard(levelNum)
 	})
 
 	closeCenterModal1()
@@ -70,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ปิดหน้า hint
 function closeCenterModal1() {
-	console.log('test')
 	var centerModal1 = document.getElementById('centerModal1')
 	centerModal1.style.display = 'none'
 }

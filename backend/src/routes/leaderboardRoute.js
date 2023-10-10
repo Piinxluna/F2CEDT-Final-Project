@@ -5,6 +5,6 @@ import * as leaderboardController from "../controllers/leaderboardController.js"
 const router = express.Router();
 
 router.post("/", leaderboardController.postNewScore);
-router.get("/", leaderboardController.getLeaderboard);
+router.get("/:level", leaderboardController.getLeaderboard);
 
 export default router;

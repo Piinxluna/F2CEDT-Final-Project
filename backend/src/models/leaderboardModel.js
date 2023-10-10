@@ -14,6 +14,10 @@ const leaderboardSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    levelNum: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );
