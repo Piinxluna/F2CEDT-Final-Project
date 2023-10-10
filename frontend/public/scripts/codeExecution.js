@@ -340,5 +340,7 @@ export async function toFinalPage(res) {
 }
 
 export async function postScore(name) {
-	await callPostNewScoreAPI(name, star, codeLists.length)
+	let levelNum = document.getElementById('levelNum').innerText
+	levelNum = levelNum.slice(6)
+	await callPostNewScoreAPI(name, star, codeLists.length, levelNum)
 }

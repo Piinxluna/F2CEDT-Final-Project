@@ -1,11 +1,10 @@
-import { callGetLeaderboardAPI, callGetNewLevelAPI } from './api.js'
-// const { callGetLeaderboardAPI } = require('./api.js')
+import { callGetLeaderboardAPI } from './api.js'
 
 /** @typedef {import("./config.js").Leaderboard} Leaderboard */
 
-export async function showLeaderboard() {
+export async function showLeaderboard(level) {
 	const table = document.getElementById('leaderboardTableBody')
-	let leaderboard = await callGetLeaderboardAPI()
+	let leaderboard = await callGetLeaderboardAPI(level)
 
 	// Clear all elements
 	table.innerHTML = ''
