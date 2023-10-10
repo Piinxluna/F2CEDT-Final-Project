@@ -25,8 +25,6 @@ export function setUpMap(mapPos, blockSize, startPos, dir, babyDuckPos) {
 	//change mom duck position
 	duckPic.height = blockSize
 	duckPic.width = blockSize
-	console.log(startPos, blockSize)
-	console.log(startPos.map(x => x * blockSize))
 	displayPos(
 		duckPic,
 		startPos.map(x => x * blockSize),
@@ -102,10 +100,10 @@ export async function changeDirection(dir) {
 	await delay(750)
 }
 
-export function hideBabyDuck(myPos, babyDuckPos) {
+export function hideBabyDuck(thisBaby, babyDuckPos) {
 	for (let i = 0; i < babyDuckPos.length; i++) {
 		let babyDuck = document.getElementById('baby-duck-pic-' + i)
-		if (isSamePoint(babyDuckPos[i], myPos)) {
+		if (isSamePoint(babyDuckPos[i], thisBaby)) {
 			babyDuck.style.display = 'none'
 		}
 	}

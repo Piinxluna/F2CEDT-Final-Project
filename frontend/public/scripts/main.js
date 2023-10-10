@@ -9,7 +9,7 @@ import {
 
 import { showLeaderboard } from './leaderboardTable.js'
 
-showNewLevel(0)
+showNewLevel(1)
 
 document.addEventListener('DOMContentLoaded', () => {
 	/** @type {HTMLButtonElement} */

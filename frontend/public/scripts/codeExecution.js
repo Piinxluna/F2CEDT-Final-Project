@@ -83,9 +83,7 @@ export async function runCode() {
 			let forCodeInput = document.getElementById(`for-code-input-${i}`)
 			let codeInput = []
 			for (let j = 1; j <= forCodeInput.children.length; j++) {
-				console.log(i, j)
 				let forInput = document.getElementById(`for-${i}-movement-${j}`)
-				console.log(forInput)
 				codeInput.push(forInput.value)
 			}
 			codeLists.push({
@@ -120,45 +118,36 @@ export async function calcResult(codeLists) {
 	var babyCollected = 0
 	var errorWalk = 0
 	var isPass = false
-	var isError = false
 	var errorRes = 'เดินไปไม่ถึงอ่า T^T'
+	let runCommandRes // { isEnd, isPass, errorRes, babyCollected, errorWalk }
 	for (let data of codeLists) {
-		isError = false
 		if (data.name == 'for') {
 			for (let i = 0; i < data.condition; i++) {
 				for (let forInput of data.forInput) {
-					await runCommand(forInput)
+					runCommandRes = await runCommand(
+						forInput,
+						isPass,
+						errorRes,
+						babyCollected,
+						errorWalk
+					)
 				}
 			}
 		} else {
-			await runCommand(data)
-		}
-
-		for (let i in babyDuckPos) {
-			if (isSamePoint(pos, babyDuckPos[i])) {
-				babyCollected++
-				hideBabyDuck(babyDuckPos[i], babyDuckPos)
-			}
-		}
-		console.log(pos, errorWalk)
-
-		if (isError == true) {
-			errorWalk++
-			await displayPos(
-				duckPic,
-				pos.map(x => x * blockSize),
-				mapPos
+			runCommandRes = await runCommand(
+				data,
+				isPass,
+				errorRes,
+				babyCollected,
+				errorWalk
 			)
-		} else {
-			errorWalk = 0
 		}
 
-		if (isSamePoint(pos, goal)) {
-			// Walk to finish point
-			isPass = true
-			break
-		} else if (errorWalk > 3) {
-			errorRes = 'เดินไปทางนั้นไม่ได้อ่ะ T^T'
+		isPass = runCommandRes.isPass
+		errorRes = runCommandRes.errorRes
+		babyCollected = runCommandRes.babyCollected
+		errorWalk = runCommandRes.errorWalk
+		if (runCommandRes.isEnd == true) {
 			break
 		}
 	}
@@ -190,19 +179,57 @@ export async function calcResult(codeLists) {
 		}
 	}
 
-	async function runCommand(data) {
+	async function runCommand(data, isPass, errorRes, babyCollected, errorWalk) {
+		let isError = false
 		if (data == 'walk') {
-			await walk()
+			isError = await walk()
 		} else if (data == 'jump') {
-			await jump()
+			isError = await jump()
 		} else if (data == 'turn left') {
 			await turn(-1)
 		} else if (data == 'turn right') {
 			await turn(1)
 		}
+
+		console.log('baby collected before : ', babyCollected)
+		for (let i in babyDuckPos) {
+			let babyDuck = document.getElementById('baby-duck-pic-' + i)
+			if (
+				isSamePoint(pos, babyDuckPos[i]) &&
+				babyDuck.style.display != 'none'
+			) {
+				babyCollected++
+				hideBabyDuck(babyDuckPos[i], babyDuckPos)
+			}
+		}
+		console.log(pos, errorWalk)
+
+		if (isError == true) {
+			errorWalk++
+			// await displayPos(
+			// 	duckPic,
+			// 	pos.map(x => x * blockSize),
+			// 	mapPos
+			// )
+		} else {
+			errorWalk = 0
+		}
+
+		let isEnd = false
+		if (isSamePoint(pos, goal)) {
+			// Walk to finish point
+			isPass = true
+			isEnd = true
+		} else if (errorWalk > 3) {
+			errorRes = 'เดินไปทางนั้นไม่ได้อ่ะ T^T'
+			isEnd = true
+		}
+
+		return { isEnd, isPass, errorRes, babyCollected, errorWalk }
 	}
 
 	async function walk() {
+		let isError = false
 		nextTarget(1)
 		if (getPosData(nextPos) == '-') {
 			pos = nextPos
@@ -214,9 +241,11 @@ export async function calcResult(codeLists) {
 		} else {
 			isError = true
 		}
+		return isError
 	}
 
 	async function jump() {
+		let isError = false
 		nextTarget(1)
 		if (getPosData(nextPos) == 'r') {
 			nextTarget(2)
@@ -229,6 +258,7 @@ export async function calcResult(codeLists) {
 		} else {
 			isError = true
 		}
+		return isError
 	}
 
 	async function turn(newDir) {
@@ -242,6 +272,7 @@ export async function calcResult(codeLists) {
 		await changeDirection(dir)
 	}
 }
+
 export async function showOldLevel() {
 	pos = startPos
 	dir = startDir
@@ -302,7 +333,11 @@ export async function showStar(type, levelScore) {
 	const star1 = document.getElementById(type + '-star1')
 	const star2 = document.getElementById(type + '-star2')
 	const star3 = document.getElementById(type + '-star3')
-	if (levelScore === 1) {
+	if (levelScore === 0) {
+		star1.style.display = 'none'
+		star2.style.display = 'none'
+		star3.style.display = 'none'
+	} else if (levelScore === 1) {
 		star1.style.display = 'inline-block'
 		star2.style.display = 'none'
 		star3.style.display = 'none'
@@ -342,6 +377,17 @@ export async function toFinalPage(res) {
 export async function postScore(name) {
 	let levelNum = document.getElementById('levelNum').innerText
 	levelNum = levelNum.slice(6)
-	await callPostNewScoreAPI(name, star, codeLists.length, levelNum)
+	let inputNum = 0
+
+	for (let input of codeLists) {
+		if (typeof input == Array) {
+			inputNum += input.length
+		} else {
+			inputNum++
+		}
+	}
+	console.log(inputNum)
+
+	await callPostNewScoreAPI(name, star, inputNum, levelNum)
 	alert('อัพเดตข้อมูลเรียบร้อย')
 }
