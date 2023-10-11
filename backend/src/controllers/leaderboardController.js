@@ -12,7 +12,6 @@ export const postNewScore = async (req, res) => {
     await newScore.save();
     res.status(200).json({ message: "OK" });
   } else {
-    console.log("found");
     if (req.body.star > oldData.star) {
       await Leaderboard.findOneAndUpdate({ name: name }, req.body);
     } else if (
