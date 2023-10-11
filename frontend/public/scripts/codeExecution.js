@@ -95,19 +95,6 @@ export async function runCode() {
 			codeLists.push(input.value)
 		}
 	}
-	console.log(codeLists)
-	// codeLists = [
-	// 	'walk',
-	// 	'jump',
-	// 	'turn left',
-	// 	'walk',
-	// 	'jump',
-	// 	'walk',
-	// 	'turn left',
-	// 	'walk',
-	// 	'walk',
-	// 	'walk',
-	// ]
 	var result = await calcResult(codeLists)
 	star = result.babyCollected
 	showStar('level', star)
@@ -373,14 +360,12 @@ export async function postScore(name) {
 	let inputNum = 0
 
 	for (let input of codeLists) {
-		if (typeof input == Array) {
-			inputNum += input.length
+		if (typeof input == 'object') {
+			inputNum += input.forInput.length + 1
 		} else {
 			inputNum++
 		}
 	}
-	console.log(inputNum)
-
 	await callPostNewScoreAPI(name, star, inputNum, levelNum)
 	alert('อัพเดตข้อมูลเรียบร้อย')
 }

@@ -61,7 +61,6 @@ function checkFor(object, codeGuide) {
 		forDetail.setAttribute('id', `for-detail-div-${forId}`)
 		codeFor.appendChild(forDetail)
 	} else if (document.getElementById(`for-detail-div-${forId}`) !== null) {
-		console.log('yeah!')
 		document.getElementById(`for-detail-div-${forId}`).remove()
 	}
 }
