@@ -119,40 +119,20 @@ export async function calcResult(codeLists) {
 	var errorWalk = 0
 	var isPass = false
 	var errorRes = 'เดินไปไม่ถึงอ่า T^T'
-	let runCommandRes // { isEnd, isPass, errorRes, babyCollected, errorWalk }
+	let runCommandRes // { isEnd }
 	for (let data of codeLists) {
 		if (data.name == 'for') {
 			for (let i = 0; i < data.condition; i++) {
 				for (let forInput of data.forInput) {
-					runCommandRes = await runCommand(
-						forInput,
-						isPass,
-						errorRes,
-						babyCollected,
-						errorWalk
-					)
-					isPass = runCommandRes.isPass
-					errorRes = runCommandRes.errorRes
-					babyCollected = runCommandRes.babyCollected
-					errorWalk = runCommandRes.errorWalk
-					if (runCommandRes.isEnd == true) {
+					runCommandRes = await runCommand(forInput)
+					if (runCommandRes == true) {
 						break
 					}
 				}
 			}
 		} else {
-			runCommandRes = await runCommand(
-				data,
-				isPass,
-				errorRes,
-				babyCollected,
-				errorWalk
-			)
-			isPass = runCommandRes.isPass
-			errorRes = runCommandRes.errorRes
-			babyCollected = runCommandRes.babyCollected
-			errorWalk = runCommandRes.errorWalk
-			if (runCommandRes.isEnd == true) {
+			runCommandRes = await runCommand(data)
+			if (runCommandRes == true) {
 				break
 			}
 		}
@@ -185,7 +165,7 @@ export async function calcResult(codeLists) {
 		}
 	}
 
-	async function runCommand(data, isPass, errorRes, babyCollected, errorWalk) {
+	async function runCommand(data) {
 		let isError = false
 		if (data == 'walk') {
 			isError = await walk()
@@ -197,7 +177,6 @@ export async function calcResult(codeLists) {
 			await turn(1)
 		}
 
-		console.log('baby collected before : ', babyCollected)
 		for (let i in babyDuckPos) {
 			let babyDuck = document.getElementById('baby-duck-pic-' + i)
 			if (
@@ -208,15 +187,14 @@ export async function calcResult(codeLists) {
 				hideBabyDuck(babyDuckPos[i], babyDuckPos)
 			}
 		}
-		console.log(pos, errorWalk)
 
 		if (isError == true) {
 			errorWalk++
-			// await displayPos(
-			// 	duckPic,
-			// 	pos.map(x => x * blockSize),
-			// 	mapPos
-			// )
+			await displayPos(
+				duckPic,
+				pos.map(x => x * blockSize),
+				mapPos
+			)
 		} else {
 			errorWalk = 0
 		}
@@ -231,7 +209,7 @@ export async function calcResult(codeLists) {
 			isEnd = true
 		}
 
-		return { isEnd, isPass, errorRes, babyCollected, errorWalk }
+		return isEnd
 	}
 
 	async function walk() {
