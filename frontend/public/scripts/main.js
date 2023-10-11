@@ -29,24 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const playAgainButton1 = document.getElementById('play-again-button-win')
 	playAgainButton1.addEventListener('click', () => {
-		const finPage = document.getElementById('gameOver')
-		finPage.style.display = 'none'
-		showOldLevel()
+		waitAndShowOldLevel()
 	})
 	const playAgainButton2 = document.getElementById('play-again-button-lose')
 	playAgainButton2.addEventListener('click', () => {
-		const finPage = document.getElementById('gameOver')
-		finPage.style.display = 'none'
-		showOldLevel()
+		waitAndShowOldLevel()
 	})
 
 	const nextLevelButton = document.getElementById('next-level-button')
 	nextLevelButton.addEventListener('click', () => {
-		let levelNum = document.getElementById('levelNum').innerText
-		levelNum = levelNum.slice(6)
-		const finPage = document.getElementById('gameOver')
-		finPage.style.display = 'none'
-		showNewLevel(levelNum)
+		waitAndShowNewLevel()
 	})
 
 	const submitButton = document.getElementById('submitButton')
@@ -86,4 +78,18 @@ function closeCenterModal2() {
 function closeCenterModal4() {
 	var centerModal4 = document.getElementById('centerModal4')
 	centerModal4.style.display = 'none'
+}
+
+async function waitAndShowOldLevel() {
+	await showOldLevel()
+	const finPage = document.getElementById('gameOver')
+	finPage.style.display = 'none'
+}
+
+async function waitAndShowNewLevel() {
+	let levelNum = document.getElementById('levelNum').innerText
+	levelNum = levelNum.slice(6)
+	await showNewLevel(levelNum)
+	const finPage = document.getElementById('gameOver')
+	finPage.style.display = 'none'
 }
