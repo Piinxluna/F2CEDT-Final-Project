@@ -16,13 +16,15 @@ var startDir = 0
 var babyDuckPos = []
 var mapArray = []
 var codeGuide = {}
-let exportedCodeGuide
+var hint = []
+var exportedCodeGuide
 
 var dir = 0 // 1 = Up, 2 = Right, 3 = Down, 4 = Left
 var pos = [0, 0]
 var nextPos = []
 var inputInd = 0
 var codeLists = []
+var hintInd = 0
 
 var star = 0
 
@@ -267,11 +269,7 @@ export async function showNewLevel(levelNumber) {
 	document.getElementById('map-background').src = `${newLev.mapFile}`
 
 	//change hint
-	var hintContent = document.getElementById('hintContent')
-	hintContent.innerHTML = ''
-	for (let i = 0; i < newLev.hint.length; i++) {
-		hintContent.innerHTML += `${i + 1} : ${newLev.hint[i]}<br />`
-	}
+	hint = newLev.hint
 
 	//change map array
 	mapArray = newLev.mapArray
@@ -346,10 +344,11 @@ export async function toFinalPage(res) {
 	if (res.isPass == true) {
 		winPage.style.display = 'block'
 		losePage.style.display = 'none'
-		showStar('result', res.babyCollected)
+		showStar('result-win', res.babyCollected)
 	} else {
 		winPage.style.display = 'none'
 		losePage.style.display = 'block'
+		showStar('result-lose', res.babyCollected)
 		document.getElementById('error-message').innerText = res.errorRes
 	}
 }
@@ -368,4 +367,15 @@ export async function postScore(name) {
 	}
 	await callPostNewScoreAPI(name, star, inputNum, levelNum)
 	alert('อัพเดตข้อมูลเรียบร้อย')
+}
+
+export function openHintModal() {
+	document.getElementById('hintContent').textContent = `${hint[hintInd]}`
+	hintInd++
+	if (hintInd >= hint.length) {
+		hintInd = 0
+	}
+
+	var centerModal1 = document.getElementById('centerModal1')
+	centerModal1.style.display = 'block'
 }

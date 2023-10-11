@@ -13,12 +13,18 @@ export const postNewScore = async (req, res) => {
     res.status(200).json({ message: "OK" });
   } else {
     if (req.body.star > oldData.star) {
-      await Leaderboard.findOneAndUpdate({ name: name }, req.body);
+      await Leaderboard.findOneAndUpdate(
+        { name: name, levelNum: req.body.levelNum },
+        req.body
+      );
     } else if (
       oldData.star == req.body.star &&
       req.body.inputNum < oldData.inputNum
     ) {
-      await Leaderboard.findOneAndUpdate({ name: name }, req.body);
+      await Leaderboard.findOneAndUpdate(
+        { name: name, levelNum: req.body.levelNum },
+        req.body
+      );
     }
 
     res.status(200).json({ message: "OK" });

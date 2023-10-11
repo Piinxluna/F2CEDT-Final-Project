@@ -1,9 +1,3 @@
-// เปิดหน้า hint
-function openCenterModal1() {
-	var centerModal1 = document.getElementById('centerModal1')
-	centerModal1.style.display = 'block'
-}
-
 // ปิดหน้า hint
 function closeCenterModal1() {
 	var centerModal1 = document.getElementById('centerModal1')
@@ -77,7 +71,9 @@ function addForInput(object, codeGuide) {
 		optionHTML += `<select id="for-${forId}-movement-${inputInd}" class="dropdown-select">
 	  <option disabled>-Choose Option-</option>`
 		for (let option of codeGuide.choice) {
-			optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
+			if (option != 'for') {
+				optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
+			}
 		}
 		optionHTML += `</select>`
 		newdropdown.innerHTML = optionHTML
