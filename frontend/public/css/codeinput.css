@@ -9,9 +9,9 @@
 
 .dropdown-title {
 	text-align: center;
-	font-size: xx-large; 
+	font-size: xx-large;
 	border: none;
-	margin : -2%
+	margin: -2%;
 }
 
 .dropdown {
@@ -101,7 +101,7 @@
 }
 
 .for-i {
-	max-width: 10%;
+	max-width: 15%;
 }
 
 #code-for-input {
@@ -111,6 +111,6 @@
 	margin: 2% 12%;
 }
 
-.in-for{
+.in-for {
 	width: max-content;
 }

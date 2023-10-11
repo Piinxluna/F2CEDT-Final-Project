@@ -37,7 +37,11 @@ export async function callGetNewLevelAPI(levelNumber) {
 	const newLevel = await fetch(
 		`${BACKEND_URL}/getNewLevel/${levelNumber}`
 	).then(r => r.json())
-	return newLevel
+	if (newLevel.disable == true) {
+		return null
+	} else {
+		return newLevel
+	}
 }
 
 export async function callPostNewScoreAPI(name, star, inputNum, levelNum) {

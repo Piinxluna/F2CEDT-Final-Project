@@ -34,7 +34,11 @@ const levelSchema = new mongoose.Schema({
     required: true,
   },
   hint: {
-    type: String,
+    type: Array,
+    required: true,
+  },
+  disable: {
+    type: Boolean,
     required: true,
   },
 });

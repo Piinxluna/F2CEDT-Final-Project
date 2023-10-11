@@ -9,7 +9,8 @@
  * @property {Array} babyDuckPos
  * @property {Array} goalPos
  * @property {Object} codeGuide
- * @property {string} hint
+ * @property {Array} hint
+ * @property {Boolean} disable
  */
 
 /**

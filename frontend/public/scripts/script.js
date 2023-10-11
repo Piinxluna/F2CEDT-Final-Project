@@ -36,7 +36,7 @@ function checkFor(object, codeGuide) {
 		)
 		let forDetail = document.createElement('div')
 		forDetail.innerHTML = `<div class="in-for">
-      <label class="for-informm">int i = 0; i </label>
+      <label class="for-informm">int i = 0; i < </label>
       <label><input type="text" class="for-i" id="condition-value-${forId}"></label>
       <label class="for-informm">; i++</label>
 		</div>`
@@ -61,7 +61,6 @@ function checkFor(object, codeGuide) {
 		forDetail.setAttribute('id', `for-detail-div-${forId}`)
 		codeFor.appendChild(forDetail)
 	} else if (document.getElementById(`for-detail-div-${forId}`) !== null) {
-		console.log('yeah!')
 		document.getElementById(`for-detail-div-${forId}`).remove()
 	}
 }
