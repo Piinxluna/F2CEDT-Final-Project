@@ -1,9 +1,3 @@
-// เปิดหน้า hint
-function openCenterModal1() {
-	var centerModal1 = document.getElementById('centerModal1')
-	centerModal1.style.display = 'block'
-}
-
 // ปิดหน้า hint
 function closeCenterModal1() {
 	var centerModal1 = document.getElementById('centerModal1')

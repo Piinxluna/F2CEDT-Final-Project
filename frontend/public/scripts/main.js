@@ -5,6 +5,7 @@ import {
 	addInputLine,
 	deleteInputLine,
 	postScore,
+	openHintModal,
 } from './codeExecution.js'
 
 import { showLeaderboard } from './leaderboardTable.js'
@@ -35,10 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	playAgainButton2.addEventListener('click', () => {
 		waitAndShowOldLevel()
 	})
-
 	const nextLevelButton = document.getElementById('next-level-button')
 	nextLevelButton.addEventListener('click', () => {
 		waitAndShowNewLevel()
+	})
+
+	const hintButton = document.getElementById('hintButton')
+	hintButton.addEventListener('click', () => {
+		openHintModal()
 	})
 
 	const submitButton = document.getElementById('submitButton')
