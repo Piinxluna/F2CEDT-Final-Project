@@ -346,10 +346,11 @@ export async function toFinalPage(res) {
 	if (res.isPass == true) {
 		winPage.style.display = 'block'
 		losePage.style.display = 'none'
-		showStar('result', res.babyCollected)
+		showStar('result-win', res.babyCollected)
 	} else {
 		winPage.style.display = 'none'
 		losePage.style.display = 'block'
+		showStar('result-lose', res.babyCollected)
 		document.getElementById('error-message').innerText = res.errorRes
 	}
 }

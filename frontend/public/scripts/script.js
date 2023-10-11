@@ -77,7 +77,9 @@ function addForInput(object, codeGuide) {
 		optionHTML += `<select id="for-${forId}-movement-${inputInd}" class="dropdown-select">
 	  <option disabled>-Choose Option-</option>`
 		for (let option of codeGuide.choice) {
-			optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
+			if (option != 'for') {
+				optionHTML += `<option value="${option}" class="dropdown-choice">${option}()</option>`
+			}
 		}
 		optionHTML += `</select>`
 		newdropdown.innerHTML = optionHTML
