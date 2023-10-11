@@ -131,6 +131,13 @@ export async function calcResult(codeLists) {
 						babyCollected,
 						errorWalk
 					)
+					isPass = runCommandRes.isPass
+					errorRes = runCommandRes.errorRes
+					babyCollected = runCommandRes.babyCollected
+					errorWalk = runCommandRes.errorWalk
+					if (runCommandRes.isEnd == true) {
+						break
+					}
 				}
 			}
 		} else {
@@ -141,14 +148,13 @@ export async function calcResult(codeLists) {
 				babyCollected,
 				errorWalk
 			)
-		}
-
-		isPass = runCommandRes.isPass
-		errorRes = runCommandRes.errorRes
-		babyCollected = runCommandRes.babyCollected
-		errorWalk = runCommandRes.errorWalk
-		if (runCommandRes.isEnd == true) {
-			break
+			isPass = runCommandRes.isPass
+			errorRes = runCommandRes.errorRes
+			babyCollected = runCommandRes.babyCollected
+			errorWalk = runCommandRes.errorWalk
+			if (runCommandRes.isEnd == true) {
+				break
+			}
 		}
 	}
 	return { errorRes, isPass, babyCollected }
@@ -281,6 +287,11 @@ export async function showOldLevel() {
 
 export async function showNewLevel(levelNumber) {
 	let newLev = await callGetNewLevelAPI(levelNumber)
+	if (newLev == null) {
+		alert('Sorry, next level is not available')
+		showOldLevel()
+		return 0
+	}
 
 	//change level number
 	document.getElementById(
@@ -291,7 +302,11 @@ export async function showNewLevel(levelNumber) {
 	document.getElementById('map-background').src = `${newLev.mapFile}`
 
 	//change hint
-	document.getElementById('hintContent').textContent = `${newLev.hint}`
+	var hintContent = document.getElementById('hintContent')
+	hintContent.innerHTML = ''
+	for (let i = 0; i < newLev.hint.length; i++) {
+		hintContent.innerHTML += `${i + 1} : ${newLev.hint[i]}<br />`
+	}
 
 	//change map array
 	mapArray = newLev.mapArray
