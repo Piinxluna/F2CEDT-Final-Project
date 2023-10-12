@@ -270,6 +270,7 @@ export async function showNewLevel(levelNumber) {
 
 	//change hint
 	hint = newLev.hint
+	hintInd = 0
 
 	//change map array
 	mapArray = newLev.mapArray
