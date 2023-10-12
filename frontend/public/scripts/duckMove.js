@@ -88,13 +88,13 @@ export async function changeDirection(dir) {
 	let duckPic = document.getElementById('mom-duck-pic')
 	let newPic
 	if (dir == 1) {
-		newPic = './src/momDuck_up.GIF'
+		newPic = './src/momDuck_up.gif'
 	} else if (dir == 2) {
-		newPic = './src/momDuck_right.GIF'
+		newPic = './src/momDuck_right.gif'
 	} else if (dir == 3) {
-		newPic = './src/momDuck_down.GIF'
+		newPic = './src/momDuck_down.gif'
 	} else if (dir == 4) {
-		newPic = './src/momDuck_left.GIF'
+		newPic = './src/momDuck_left.gif'
 	}
 	duckPic.src = newPic
 	await delay(750)
